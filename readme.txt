@@ -30,7 +30,9 @@ At the moment I don't plan any improvements, but if you find the plugin useful a
 improvement, just let me know.
 
 To display the related posts, simply add
+
 	<?php echo $related->show(get_the_ID()); ?>
+
 to your template, inside the Wordpress loop.
 For advanced options, see the installation docs.
 
@@ -49,8 +51,11 @@ Use the plugin installer built into Wordpress to search for the plugin. Wordpres
 **How to display the related posts on your website**
 
 The related posts are displayed by adding
+
 	<?php echo $related->show($post_id); ?>
+
 to your template. Replace `` $post_id `` with a post ID. If you call it within the Wordpress loop, you can use
+
 	<?php echo $related->show(get_the_ID()); ?>
 
 You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the 
