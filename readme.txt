@@ -2,7 +2,7 @@
 Contributors: chipsandtv
 Donate link: http://chipsandtv.com/
 Tags: related posts, related, post
-Requires at least: 2.8
+Requires at least: 2.9
 Tested up to: 2.9.1
 Stable tag: trunk
 
@@ -28,9 +28,7 @@ At the moment I don't plan any improvements, but if you find the plugin useful a
 improvement, just let me know.
 
 To display the related posts, simply add
-
 	<?php echo $related->show(get_the_ID()); ?>
-
 to your template, inside the Wordpress loop.
 For advanced options, see the installation docs.
 
@@ -42,18 +40,15 @@ Use the plugin installer built into Wordpress to search for the plugin. Wordpres
 
 **Option 2 - Manual install**
 
-1. Make sure the files are within a folder called 'related' (or simply choose your own name).
+1. Make sure the files are within a folder.
 2. Copy the whole folder inside the wp-content/plugins/ folder.
 3. In the backend, active the plugin. You can now select related posts when you create or edit blog posts.
 
 **How to display the related posts on your website**
 
 The related posts are displayed by adding
-
 	<?php echo $related->show($post_id); ?>
-	
 to your template. Replace `` $post_id `` with a post ID. If you call it within the Wordpress loop, you can use
-
 	<?php echo $related->show(get_the_ID()); ?>
 
 You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the 
