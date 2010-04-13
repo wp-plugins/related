@@ -10,6 +10,8 @@ A simple 'related posts' plugin that lets you choose the related posts yourself 
 
 == Description ==
 
+A simple 'related posts' plugin that lets you choose the related posts yourself instead of generating the list automatically.
+
 Features:
 
 * Add related posts to your blog posts
