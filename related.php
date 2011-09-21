@@ -2,13 +2,13 @@
 /*
 Plugin Name: Related
 Plugin URI: http://chipsandtv.com/
-Description: Simple related posts plugin
-Version: 1.0
+Description: A simple 'related posts' plugin that lets you choose the related posts yourself instead of generating the list automatically.
+Version: 1.1
 Author: Matthias Siegel
 Author URI: http://chipsandtv.com/
 
 
-Copyright 2010  Matthias Siegel  (email : chipsandtv@gmail.com)
+Copyright 2010-2011  Matthias Siegel  (email: chipsandtv@gmail.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,11 +35,7 @@ if (!class_exists('Related')) :
 			
 			// Set some helpful constants
 			$this->defineConstants();
-			
-			
-			// Register uninstall hook
-			register_uninstall_hook(dirname(__FILE__) . '/related.php', array(&$this, 'uninstall'));
-
+						
 			// Register hook to save the related posts when saving the post
 			add_action('save_post', array(&$this, 'save'));
 
@@ -59,15 +55,6 @@ if (!class_exists('Related')) :
 		}
 				
 		
-		// Removes all related post entries from the postmeta table
-		protected function uninstall() {
-
-			global $wpdb;
-			
-			$wpdb->query($wpdb->prepare("DELETE FROM $wpdb->postmeta WHERE meta_key = 'related_posts'"));
-		}
-
-
 		// Main function
 		public function start() {
 			
@@ -77,9 +64,10 @@ if (!class_exists('Related')) :
 			// Load the CSS
 			add_action('admin_print_styles', array(&$this, 'loadCSS'));
 			
-			// Adds a meta box for related posts to the posts screen
-			add_meta_box('post-meta-boxes', 'Related posts', array(&$this, 'displayMetaBox'), 'post', 'normal', 'high');
-
+			// Adds a meta box for related posts to the edit screen of each post type in WordPress
+			foreach (get_post_types() as $post_type) :
+				add_meta_box($post_type . '-related-posts-box', 'Related posts', array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+			endforeach;
 		}
 
 
@@ -100,17 +88,17 @@ if (!class_exists('Related')) :
 
 
 		// Save related posts when saving the post
-		public function save() {
+		public function save($id) {
 			
 			global $wpdb;
 			
-			if (!empty($_POST['related-posts'])) :
-				$id = $_POST['post_ID'];
-				$related = $_POST['related-posts'];
-				
-				// Add or update related posts entry
-				update_post_meta($id, 'related_posts', $related);
-			endif;
+			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+
+			if (!isset($_POST['related-posts']) || empty($_POST['related-posts'])) :
+				delete_post_meta($id, 'related_posts');
+			else :
+				update_post_meta($id, 'related_posts', $_POST['related-posts']);
+			endif;			
 		}
 
 
@@ -129,8 +117,8 @@ if (!class_exists('Related')) :
 					$p = get_post($r);
 					echo '
 						<div class="related-post" id="related-post-' . $r . '">
-							<input type="hidden" name="related-posts[]" value="' . $r . '" />
-							<span class="related-post-title">' . $p->post_title . '</span>
+							<input type="hidden" name="related-posts[]" value="' . $r . '">
+							<span class="related-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
 							<a href="#">Delete</a>
 						</div>';
 				endforeach;
@@ -143,19 +131,25 @@ if (!class_exists('Related')) :
 						<option value="0">Select</option>';
 			
 			$query = array(
-				'posts_per_page' => -1,
-				'what_to_show' => 'posts',
 				'nopaging' => true,
-				'post_status' => 'publish'
+				'post__not_in' => array($post_ID),
+				'post_status' => 'publish',
+				'posts_per_page' => -1,
+				'post_type' => 'any',
+				'orderby' => 'title',
+				'order' => 'ASC'
 			);
+			
 			$p = new WP_Query($query);
+			
 			if ($p->have_posts()) :
 				while ($p->have_posts()) :
 					$p->the_post();
 					echo '
-						<option value="' . get_the_ID() . '">' . get_the_title() . '</option>';
+						<option value="' . get_the_ID() . '">' . get_the_title() . ' (' . ucfirst(get_post_type(get_the_ID())) . ')</option>';
 				endwhile;
 			endif;
+			
 			wp_reset_query();
 								
 			echo '
@@ -202,7 +196,6 @@ if (!class_exists('Related')) :
 			else :
 				return 'Invalid post ID specified';
 			endif;
-
 		}
 	}
 	
@@ -217,6 +210,5 @@ endif;
 global $related;
 
 $related = new Related();
-
 
 ?>
