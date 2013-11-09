@@ -120,6 +120,7 @@ Yes, it is again actively maintained.
 
 = 1.2 =
 * Don't overwrite default post
+* Switch from jquery.live to jquery.on, requires WP 3.3 at least
 
 = 1.1.1 =
 * Minor rewrites that may prevent interference with other plugins
