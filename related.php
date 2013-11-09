@@ -1,11 +1,13 @@
 <?php
 /*
 Plugin Name: Related
-Plugin URI: http://timelord.nl
+Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
 Version: 1.2
 Author: Matthias Siegel, Marcel Pol
 Author URI: http://timelord.nl
+Text Domain: related
+Domain Path: /lang/
 
 
 Copyright 2010-2012  Matthias Siegel  (email: matthias.siegel@gmail.com)
@@ -67,7 +69,7 @@ if (!class_exists('Related')) :
 
 			// Adds a meta box for related posts to the edit screen of each post type in WordPress
 			foreach (get_post_types() as $post_type) :
-				add_meta_box($post_type . '-related-posts-box', 'Related posts', array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+				add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
 			endforeach;
 		}
 
@@ -122,7 +124,7 @@ if (!class_exists('Related')) :
 						<div class="related-post" id="related-post-' . $r . '">
 							<input type="hidden" name="related-posts[]" value="' . $r . '">
 							<span class="related-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
-							<a href="#">Delete</a>
+							<a href="#">' . __('Delete', 'related' ) . '</a>
 						</div>';
 				endforeach;
 			endif;
@@ -131,7 +133,7 @@ if (!class_exists('Related')) :
 				</div>
 				<p>
 					<select id="related-posts-select" name="related-posts-select">
-						<option value="0">Select</option>';
+						<option value="0">' . __('Select', 'related' ) . '</option>';
 
 			$query = array(
 				'nopaging' => true,
@@ -160,9 +162,9 @@ if (!class_exists('Related')) :
 			echo '
 					</select>
 				</p>
-				<p>
-					Select related posts from the list. Drag selected ones to change order.
-				</p>';
+				<p>' .
+					__('Select related posts from the list. Drag selected ones to change order.', 'related' )
+				. '</p>';
 		}
 
 
@@ -199,7 +201,7 @@ if (!class_exists('Related')) :
 					return false;
 				endif;
 			else :
-				return 'Invalid post ID specified';
+				return __('Invalid post ID specified', 'related' );
 			endif;
 		}
 	}
@@ -208,6 +210,16 @@ if (!class_exists('Related')) :
 
 endif;
 
+/*
+ * related_init
+ * Function called at initialisation.
+ * - Loads language files
+ */
+
+function related_init() {
+ 	load_plugin_textdomain('related', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/');
+}
+add_action('plugins_loaded', 'related_init');
 
 
 // Start the plugin

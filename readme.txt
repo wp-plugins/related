@@ -100,10 +100,6 @@ As many as you like, there's no limit.
 
 That's true, it isn't ideal for large blogs. This might get improved in future releases, feel free to submit ideas.
 
-= In WordPress 2.9, a strange error appears when I try to delete the plugin. =
-
-Yes, I don't know what the problem is. It's only in WordPress 2.9. Just delete the plugin directory manually from wp-content/plugins.
-
 = When I delete the plugin, will it delete the related posts data? =
 
 With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
@@ -117,6 +113,10 @@ Yes, it is again actively maintained.
 1. Choosing related posts in the edit post screen
 
 == Changelog ==
+
+= 1.2.1 =
+* Add localisation
+* Add nl_NL
 
 = 1.2 =
 * Don't overwrite default post
