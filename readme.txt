@@ -1,7 +1,7 @@
 === Related ===
 Contributors: chipsandtv, mpol
 Tags: related posts, related, post
-Requires at least: 2.9
+Requires at least: 3.3
 Tested up to: 3.7.1
 Stable tag: 1.1.1
 
@@ -95,10 +95,6 @@ Data is stored in the existing postmeta table in the WordPress database. No addi
 = How many related posts can I add? =
 
 As many as you like, there's no limit.
-
-= WordPress version 2.9 is listed as minimum required version. Any chance it will work with earlier versions? =
-
-There's a chance it will work with earlier versions, but I haven't tested it.
 
 = I have 500+ posts on my blog and selecting the posts with the one select box isn't very comfortable, lots of scrolling. =
 

@@ -1,14 +1,15 @@
 <?php
 /*
 Plugin Name: Related
-Plugin URI: https://github.com/matthiassiegel/Related
+Plugin URI: http://timelord.nl
 Description: A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
 Version: 1.1.1
-Author: Matthias Siegel
-Author URI: https://github.com/matthiassiegel/Related
+Author: Matthias Siegel, Marcel Pol
+Author URI: http://timelord.nl
 
 
 Copyright 2010-2012  Matthias Siegel  (email: matthias.siegel@gmail.com)
+Copyright 2013       Marcel Pol       (email: marcel@timelord.nl)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
