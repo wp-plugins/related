@@ -20,11 +20,9 @@ Features:
 * Re-order related posts via drag and drop
 * Custom markup possible, or simply use the default output
 
-I wrote the plugin because I wanted to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, I wanted to be able to select the related posts myself.
+The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, it is possible to select the related posts yourself.
 
 The plugin targets small and medium sized blogs. On blogs with lots of posts (500+) it might not be very comfortable to choose the posts via select box.
-
-You can contribute improvements to this plugin by forking it on [GitHub](https://github.com/matthiassiegel/Related).
 
 To display the related posts, simply add the following line in your template, inside the WordPress loop.
 
