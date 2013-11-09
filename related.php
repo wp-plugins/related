@@ -3,8 +3,8 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
-Version: 1.2
-Author: Matthias Siegel, Marcel Pol
+Version: 1.2.1
+Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
 Domain Path: /lang/
@@ -50,7 +50,7 @@ if (!class_exists('Related')) :
 		// Defines a few static helper values we might need
 		protected function defineConstants() {
 
-			define('RELATED_VERSION', '1.2');
+			define('RELATED_VERSION', '1.2.1');
 			define('RELATED_HOME', 'http://timelord.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -214,18 +214,19 @@ endif;
  * related_init
  * Function called at initialisation.
  * - Loads language files
+ * - Make an instance of Related()
  */
 
 function related_init() {
  	load_plugin_textdomain('related', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/');
+
+	// Start the plugin
+	global $related;
+	$related = new Related();
 }
 add_action('plugins_loaded', 'related_init');
 
 
-// Start the plugin
 
-global $related;
-
-$related = new Related();
 
 ?>

@@ -1,9 +1,9 @@
 === Related ===
-Contributors: chipsandtv, mpol
+Contributors: mpol
 Tags: related posts, related, post
 Requires at least: 3.3
 Tested up to: 3.7.1
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
 
@@ -115,6 +115,7 @@ Yes, it is again actively maintained.
 = 1.2.1 =
 * Add localisation
 * Add nl_NL
+* Only make an instance in the init function
 
 = 1.2 =
 * Don't overwrite default post
