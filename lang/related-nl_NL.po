@@ -1,0 +1,40 @@
+# Related.
+# Copyright (C) 2013 Marcel Pol
+# This file is distributed under the same license as the Related package.
+# Marcel Pol <marcel@timelord.nl>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-09 14:04+0100\n"
+"PO-Revision-Date: 2013-11-09 14:08+0100\n"
+"Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: related.php:72
+msgid "Related posts"
+msgstr "Gerelateerde posts"
+
+#: related.php:127
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: related.php:136
+msgid "Select"
+msgstr "Selecteren"
+
+#: related.php:166
+msgid "Select related posts from the list. Drag selected ones to change order."
+msgstr ""
+"Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
+"volgorde te wijzigen."
+
+#: related.php:204
+msgid "Invalid post ID specified"
+msgstr "Ongeldige post ID opgegeven"

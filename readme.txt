@@ -1,10 +1,9 @@
 === Related ===
-Contributors: chipsandtv
-Donate link: https://github.com/matthiassiegel/Related
+Contributors: mpol
 Tags: related posts, related, post
-Requires at least: 2.9
-Tested up to: 3.3
-Stable tag: 1.1.1
+Requires at least: 3.3
+Tested up to: 3.7.1
+Stable tag: 1.2.1
 
 A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
 
@@ -21,11 +20,9 @@ Features:
 * Re-order related posts via drag and drop
 * Custom markup possible, or simply use the default output
 
-I wrote the plugin because I wanted to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, I wanted to be able to select the related posts myself.
+The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, it is possible to select the related posts yourself.
 
 The plugin targets small and medium sized blogs. On blogs with lots of posts (500+) it might not be very comfortable to choose the posts via select box.
-
-You can contribute improvements to this plugin by forking it on [GitHub](https://github.com/matthiassiegel/Related).
 
 To display the related posts, simply add the following line in your template, inside the WordPress loop.
 
@@ -55,7 +52,7 @@ to your template. Replace `` $post_id `` with a post ID. If you call it within t
 
 	<?php echo $related->show(get_the_ID()); ?>
 
-You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the 
+You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the
 markup yourself.
 
 **Examples**
@@ -63,19 +60,19 @@ markup yourself.
 *Example 1: Using the default output*
 
 	<?php echo $related->show(get_the_ID()); ?>
-	
+
 This can be called within the WordPress loop. It will output a `` <ul> `` list with links.
 
 *Example 2: Returning an array*
 
 	<?php $rel = $related->show(get_the_ID(), true); ?>
-	
-With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup. 
+
+With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup.
 Here is an example:
 
 	<?php
 		$rel = $related->show(get_the_ID(), true);
-	
+
 		// Display the title of each related post
 		foreach ($rel as $r) :
 			echo $r->post_title . '<br />';
@@ -86,7 +83,7 @@ Here is an example:
 
 = Who should use this plugin? =
 
-People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts themselves, instead of 
+People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts themselves, instead of
 having a list generated automatically like other plugins do, using weird algorithms that often create comical results.
 
 = Where does the plugin store its data? =
@@ -97,17 +94,9 @@ Data is stored in the existing postmeta table in the WordPress database. No addi
 
 As many as you like, there's no limit.
 
-= WordPress version 2.9 is listed as minimum required version. Any chance it will work with earlier versions? =
-
-There's a chance it will work with earlier versions, but I haven't tested it.
-
 = I have 500+ posts on my blog and selecting the posts with the one select box isn't very comfortable, lots of scrolling. =
 
 That's true, it isn't ideal for large blogs. This might get improved in future releases, feel free to submit ideas.
-
-= In WordPress 2.9, a strange error appears when I try to delete the plugin. =
-
-Yes, I don't know what the problem is. It's only in WordPress 2.9. Just delete the plugin directory manually from wp-content/plugins.
 
 = When I delete the plugin, will it delete the related posts data? =
 
@@ -115,15 +104,22 @@ With version 1.1, all data remains in the database when the plugin files are del
 
 = Is this plugin actively maintained? =
 
-Not very actively, mostly because my focus is on Ruby development, so my interest in WordPress/PHP is limited. However I get quite a few emails from people who enjoy using the plugin, so if there are any major issues I will look into it.
-
-If you're a developer you are encouraged to submit improvements. Just fork it on [GitHub](https://github.com/matthiassiegel/Related) and submit changes. Every now and then I might find time to incorporate improvements and push out a new release.
+Yes, it is again actively maintained.
 
 == Screenshots ==
 
 1. Choosing related posts in the edit post screen
 
 == Changelog ==
+
+= 1.2.1 =
+* Add localisation
+* Add nl_NL
+* Only make an instance in the init function
+
+= 1.2 =
+* Don't overwrite default post
+* Switch from jquery.live to jquery.on, requires WP 3.3 at least
 
 = 1.1.1 =
 * Minor rewrites that may prevent interference with other plugins
