@@ -1,5 +1,5 @@
 === Related ===
-Contributors: chipsandtv
+Contributors: chipsandtv, mpol
 Donate link: https://github.com/matthiassiegel/Related
 Tags: related posts, related, post
 Requires at least: 2.9
