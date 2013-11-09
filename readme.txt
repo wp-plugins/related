@@ -3,7 +3,7 @@ Contributors: chipsandtv, mpol
 Tags: related posts, related, post
 Requires at least: 3.3
 Tested up to: 3.7.1
-Stable tag: 1.1.1
+Stable tag: 1.2
 
 A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
 

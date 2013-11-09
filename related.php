@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl
 Description: A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
-Version: 1.1.1
+Version: 1.2
 Author: Matthias Siegel, Marcel Pol
 Author URI: http://timelord.nl
 
@@ -48,8 +48,8 @@ if (!class_exists('Related')) :
 		// Defines a few static helper values we might need
 		protected function defineConstants() {
 
-			define('RELATED_VERSION', '1.1.1');
-			define('RELATED_HOME', 'https://github.com/matthiassiegel/Related');
+			define('RELATED_VERSION', '1.2');
+			define('RELATED_HOME', 'http://timelord.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
 			define('RELATED_URLPATH', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)));
