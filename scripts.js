@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
 
-	$('#related-posts-select').change(function() {
+	$('.related-posts-select').change(function() {
 		var select = $(this),
 				container = $('#related-posts'),
 				id = select.val(),

@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.3
+Version: 1.3.1
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -156,7 +156,7 @@ if (!class_exists('Related')) :
 			echo '
 				</div>
 				<p>
-					<select id="related-posts-select" name="related-posts-select">
+					<select class="related-posts-select" name="related-posts-select" style="min-width:500px;">
 						<option value="0">' . __('Select', 'related' ) . '</option>';
 
 			$related_list = get_option('related_list');
@@ -187,12 +187,22 @@ if (!class_exists('Related')) :
 			$p = new WP_Query($query);
 
 			$count = count($p->posts);
+			$counter = 1;
 			foreach ($p->posts as $thePost) {
+				if ( is_int( $counter / 50 ) ) {
+					echo '
+						</select>
+					</p>
+					<p>
+						<select class="related-posts-select" name="related-posts-select" style="min-width:500px;">
+							<option value="0">' . __('Select', 'related' ) . '</option>';
+				}
 				?>
 				<option value="<?php
 					echo $thePost->ID; ?>"><?php echo
 					$thePost->post_title.' ('.ucfirst(get_post_type($thePost->ID)).')'; ?></option>
 				<?php
+				$counter++;
 			}
 
 			wp_reset_query();
@@ -281,8 +291,7 @@ if (!class_exists('Related')) :
 
 			echo '<div id="poststuff" class="metabox-holder">
 					<div class="widget related-widget" style="max-width:700px;">
-						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.<br />
-							If Any is selected, it will show on any Post Type. If none are selected, Any will still apply.', 'related') . '</h3>';
+						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.', 'related') . '</h3>';
 
 			$related_show = get_option('related_show');
 			$related_show = json_decode( $related_show );
@@ -300,6 +309,7 @@ if (!class_exists('Related')) :
 			?>
 
 			<div class="misc-pub-section">
+			<p><?php _e('If Any is selected, it will show on any Post Type. If none are selected, Any will still apply.', 'related'); ?></p>
 			<form name="related_options_page_show" action="" method="POST">
 				<ul>
 				<li><label for="show_any">
@@ -336,8 +346,7 @@ if (!class_exists('Related')) :
 			<?php
 
 			echo '<div class="widget related-widget" style="max-width:700px;">
-						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.<br />
-							If Any is selected, it will list any Post Type. If none are selected, it will still list any Post Type.', 'related') . '</h3>';
+						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.', 'related') . '</h3>';
 			$any = ''; // reset
 			$related_list = get_option('related_list');
 			$related_list = json_decode( $related_list );
@@ -355,6 +364,7 @@ if (!class_exists('Related')) :
 			?>
 
 			<div class="misc-pub-section">
+			<p><?php _e('If Any is selected, it will list any Post Type. If none are selected, it will still list any Post Type.', 'related'); ?></p>
 			<form name="related_options_page_listed" action="" method="POST">
 				<ul>
 				<li><label for="list_any">

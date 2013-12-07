@@ -1,9 +1,9 @@
 === Related ===
 Contributors: mpol
-Tags: related posts, related, post
+Tags: related posts, related, post, linked posts, linked
 Requires at least: 3.3
 Tested up to: 3.7.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -20,9 +20,7 @@ Features:
 * Re-order related posts via drag and drop
 * Custom markup possible, or simply use the default output
 
-The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, it is possible to select the related posts yourself.
-
-The plugin targets small and medium sized blogs. On blogs with lots of posts (500+) it might not be very comfortable to choose the posts via select box.
+The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
 To display the related posts, simply add the following line in your template, inside the WordPress loop.
 
@@ -93,10 +91,6 @@ Data is stored in the existing postmeta table in the WordPress database. No addi
 
 As many as you like, there's no limit.
 
-= I have 500+ posts on my blog and selecting the posts with the one select box isn't very comfortable, lots of scrolling. =
-
-That's true, it isn't ideal for large blogs. This might get improved in future releases, feel free to submit ideas.
-
 = When I delete the plugin, will it delete the related posts data? =
 
 With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
@@ -111,10 +105,13 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.3.1 =
+* On blogs with many posts, split the select box in multiple select boxes
+
 = 1.3 =
-- Add options page:
-- Only get shown on selected post types
-- Only list selected post types to select as related post
+* Add options page:
+* Only get shown on selected post types
+* Only list selected post types to select as related post
 
 = 1.2.1 =
 * Add localisation
