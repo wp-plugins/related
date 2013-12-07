@@ -1,0 +1,68 @@
+# Related.
+# Copyright (C) 2013 Marcel Pol
+# This file is distributed under the same license as the Related package.
+# Marcel Pol <marcel@timelord.nl>, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.2\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-07 17:53+0100\n"
+"PO-Revision-Date: 2013-12-07 17:57+0100\n"
+"Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: related.php:90 related.php:94
+msgid "Related posts"
+msgstr "Gerelateerde Berichten"
+
+#: related.php:151
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: related.php:160
+msgid "Select"
+msgstr "Selecteren"
+
+#: related.php:205
+msgid "Select related posts from the list. Drag selected ones to change order."
+msgstr ""
+"Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
+"volgorde te wijzigen."
+
+#: related.php:243
+msgid "Invalid post ID specified"
+msgstr "Ongeldige post ID opgegeven"
+
+#: related.php:249
+msgid "Related Posts"
+msgstr "Gerelateerde Berichten"
+
+#: related.php:255
+msgid "Cheatin&#8217; uh?"
+msgstr "Valsspelen, he?"
+
+#: related.php:284
+msgid ""
+"Post Types to show the Related Posts form on.<br />\n"
+"\t\t\t\t\t\t\tIf Any is selected, it will show on any Post Type. If none are "
+"selected, Any will still apply."
+msgstr ""
+"Post Types om het Gerelateerde Berichten formulier op te tonen.<br />\n"
+"\t\t\t\t\t\t\tAls Any geselecteerd is, wordt het op ieder Post Type getoond. "
+"Als geen is geselecteerd, geldt Any nog steeds."
+
+#: related.php:339
+msgid ""
+"Post Types to list on the Related Posts forms.<br />\n"
+"\t\t\t\t\t\t\tIf Any is selected, it will list any Post Type. If none are "
+"selected, it will still list any Post Type."
+msgstr ""
+"Post Types om weer te geven op het Gerelateerde Berichten formulier.<br />\n"
+"\t\t\t\t\t\t\tAls Any geselecteerd is, wordt ieder Post Type getoond. Als "
+"geen is geselecteerd, zal het nog steeds ieder Post Type tonen."

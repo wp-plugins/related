@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-07 17:53+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: related.php:90 related.php:94
+msgid "Related posts"
+msgstr ""
+
+#: related.php:151
+msgid "Delete"
+msgstr ""
+
+#: related.php:160
+msgid "Select"
+msgstr ""
+
+#: related.php:205
+msgid "Select related posts from the list. Drag selected ones to change order."
+msgstr ""
+
+#: related.php:243
+msgid "Invalid post ID specified"
+msgstr ""
+
+#: related.php:249
+msgid "Related Posts"
+msgstr ""
+
+#: related.php:255
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: related.php:284
+msgid ""
+"Post Types to show the Related Posts form on.<br />\n"
+"\t\t\t\t\t\t\tIf Any is selected, it will show on any Post Type. If none are "
+"selected, Any will still apply."
+msgstr ""
+
+#: related.php:339
+msgid ""
+"Post Types to list on the Related Posts forms.<br />\n"
+"\t\t\t\t\t\t\tIf Any is selected, it will list any Post Type. If none are "
+"selected, it will still list any Post Type."
+msgstr ""
