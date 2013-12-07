@@ -91,6 +91,12 @@ Data is stored in the existing postmeta table in the WordPress database. No addi
 
 As many as you like, there's no limit.
 
+= I have many posts, how can I deal with that in the best way? =
+
+There are 2 things that are done or possible.
+By default, the plugin will split the select boxes into max 50 posts, so it's easier to handle for the user.
+Also, you can select on the Options page to not list all post types. This will trim down the number of posts that are listed.
+
 = When I delete the plugin, will it delete the related posts data? =
 
 With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
