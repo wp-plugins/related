@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.2\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 17:53+0100\n"
-"PO-Revision-Date: 2013-12-07 17:57+0100\n"
+"POT-Creation-Date: 2013-12-07 19:08+0100\n"
+"PO-Revision-Date: 2013-12-07 19:10+0100\n"
 "Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl_NL\n"
@@ -25,44 +25,48 @@ msgstr "Gerelateerde Berichten"
 msgid "Delete"
 msgstr "Verwijderen"
 
-#: related.php:160
+#: related.php:160 related.php:198
 msgid "Select"
 msgstr "Selecteren"
 
-#: related.php:205
+#: related.php:215
 msgid "Select related posts from the list. Drag selected ones to change order."
 msgstr ""
 "Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
 "volgorde te wijzigen."
 
-#: related.php:243
+#: related.php:253
 msgid "Invalid post ID specified"
 msgstr "Ongeldige post ID opgegeven"
 
-#: related.php:249
+#: related.php:259
 msgid "Related Posts"
 msgstr "Gerelateerde Berichten"
 
-#: related.php:255
+#: related.php:265
 msgid "Cheatin&#8217; uh?"
 msgstr "Valsspelen, he?"
 
-#: related.php:284
-msgid ""
-"Post Types to show the Related Posts form on.<br />\n"
-"\t\t\t\t\t\t\tIf Any is selected, it will show on any Post Type. If none are "
-"selected, Any will still apply."
-msgstr ""
-"Post Types om het Gerelateerde Berichten formulier op te tonen.<br />\n"
-"\t\t\t\t\t\t\tAls Any geselecteerd is, wordt het op ieder Post Type getoond. "
-"Als geen is geselecteerd, geldt Any nog steeds."
+#: related.php:294
+msgid "Post Types to show the Related Posts form on."
+msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
 
-#: related.php:339
+#: related.php:312
 msgid ""
-"Post Types to list on the Related Posts forms.<br />\n"
-"\t\t\t\t\t\t\tIf Any is selected, it will list any Post Type. If none are "
-"selected, it will still list any Post Type."
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
 msgstr ""
-"Post Types om weer te geven op het Gerelateerde Berichten formulier.<br />\n"
-"\t\t\t\t\t\t\tAls Any geselecteerd is, wordt ieder Post Type getoond. Als "
-"geen is geselecteerd, zal het nog steeds ieder Post Type tonen."
+"Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
+"geselecteerd, geldt Any nog steeds."
+
+#: related.php:349
+msgid "Post Types to list on the Related Posts forms."
+msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
+
+#: related.php:367
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+"Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
+"geselecteerd, zal het nog steeds ieder Post Type tonen."

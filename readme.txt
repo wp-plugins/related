@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related posts, related, post, linked posts, linked
 Requires at least: 3.3
 Tested up to: 3.7.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -110,6 +110,9 @@ Yes, it is again actively maintained.
 1. Choosing related posts in the edit post screen
 
 == Changelog ==
+
+= 1.3.2 =
+* Move styling to stylesheet
 
 = 1.3.1 =
 * On blogs with many posts, split the select box in multiple select boxes

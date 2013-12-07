@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 17:53+0100\n"
+"POT-Creation-Date: 2013-12-07 19:08+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,36 +25,42 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: related.php:160
+#: related.php:160 related.php:198
 msgid "Select"
 msgstr ""
 
-#: related.php:205
+#: related.php:215
 msgid "Select related posts from the list. Drag selected ones to change order."
 msgstr ""
 
-#: related.php:243
+#: related.php:253
 msgid "Invalid post ID specified"
 msgstr ""
 
-#: related.php:249
+#: related.php:259
 msgid "Related Posts"
 msgstr ""
 
-#: related.php:255
+#: related.php:265
 msgid "Cheatin&#8217; uh?"
 msgstr ""
 
-#: related.php:284
-msgid ""
-"Post Types to show the Related Posts form on.<br />\n"
-"\t\t\t\t\t\t\tIf Any is selected, it will show on any Post Type. If none are "
-"selected, Any will still apply."
+#: related.php:294
+msgid "Post Types to show the Related Posts form on."
 msgstr ""
 
-#: related.php:339
+#: related.php:312
 msgid ""
-"Post Types to list on the Related Posts forms.<br />\n"
-"\t\t\t\t\t\t\tIf Any is selected, it will list any Post Type. If none are "
-"selected, it will still list any Post Type."
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+
+#: related.php:349
+msgid "Post Types to list on the Related Posts forms."
+msgstr ""
+
+#: related.php:367
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
 msgstr ""

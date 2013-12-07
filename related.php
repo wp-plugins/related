@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.3.1
+Version: 1.3.2
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -156,7 +156,7 @@ if (!class_exists('Related')) :
 			echo '
 				</div>
 				<p>
-					<select class="related-posts-select" name="related-posts-select" style="min-width:500px;">
+					<select class="related-posts-select" name="related-posts-select">
 						<option value="0">' . __('Select', 'related' ) . '</option>';
 
 			$related_list = get_option('related_list');
@@ -194,7 +194,7 @@ if (!class_exists('Related')) :
 						</select>
 					</p>
 					<p>
-						<select class="related-posts-select" name="related-posts-select" style="min-width:500px;">
+						<select class="related-posts-select" name="related-posts-select">
 							<option value="0">' . __('Select', 'related' ) . '</option>';
 				}
 				?>
@@ -290,7 +290,7 @@ if (!class_exists('Related')) :
 			// Make a form to submit
 
 			echo '<div id="poststuff" class="metabox-holder">
-					<div class="widget related-widget" style="max-width:700px;">
+					<div class="widget related-widget">
 						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.', 'related') . '</h3>';
 
 			$related_show = get_option('related_show');
@@ -345,7 +345,7 @@ if (!class_exists('Related')) :
 			</div>
 			<?php
 
-			echo '<div class="widget related-widget" style="max-width:700px;">
+			echo '<div class="widget related-widget">
 						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.', 'related') . '</h3>';
 			$any = ''; // reset
 			$related_list = get_option('related_list');
