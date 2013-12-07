@@ -2,8 +2,8 @@
 /*
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
-Description: A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
-Version: 1.2.1
+Description: A simple 'related posts' plugin that lets you select related posts manually.
+Version: 1.3
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -44,6 +44,9 @@ if (!class_exists('Related')) :
 
 			// Start the plugin
 			add_action('admin_menu', array(&$this, 'start'));
+
+			// Adds an option page for the plugin
+			add_action('admin_menu', array(&$this, 'related_options'));
 		}
 
 
@@ -68,9 +71,30 @@ if (!class_exists('Related')) :
 			add_action('admin_print_styles', array(&$this, 'loadCSS'));
 
 			// Adds a meta box for related posts to the edit screen of each post type in WordPress
-			foreach (get_post_types() as $post_type) :
-				add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
-			endforeach;
+			$related_show = get_option('related_show');
+			$related_show = json_decode( $related_show );
+			if ( empty( $related_show ) ) {
+				$related_show = array();
+				$related_show[] = 'any';
+			} else {
+				foreach ( $related_show as $post_type ) {
+					if ( $post_type == 'any' ) {
+						$related_show = array();
+						$related_show[] = 'any';
+						break;
+					}
+				}
+			}
+			if ( $related_show[0] == 'any' ) {
+				foreach (get_post_types() as $post_type) :
+					add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+				endforeach;
+			} else {
+				foreach ($related_show as $post_type) :
+					add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+				endforeach;
+			}
+
 		}
 
 
@@ -135,12 +159,27 @@ if (!class_exists('Related')) :
 					<select id="related-posts-select" name="related-posts-select">
 						<option value="0">' . __('Select', 'related' ) . '</option>';
 
+			$related_list = get_option('related_list');
+			$related_list = json_decode( $related_list );
+			if ( empty( $related_list ) ) {
+				$related_list = array();
+				$related_list[] = 'any';
+			} else {
+				foreach ( $related_list as $post_type ) {
+					if ( $post_type == 'any' ) {
+						$related_list = array();
+						$related_list[] = 'any';
+						break;
+					}
+				}
+			}
+
 			$query = array(
 				'nopaging' => true,
 				'post__not_in' => array($post_id),
 				'post_status' => 'publish',
 				'posts_per_page' => -1,
-				'post_type' => 'any',
+				'post_type' => $related_list,
 				'orderby' => 'title',
 				'order' => 'ASC'
 			);
@@ -204,9 +243,154 @@ if (!class_exists('Related')) :
 				return __('Invalid post ID specified', 'related' );
 			endif;
 		}
+
+		// Adds an option page to Settings.
+		function related_options() {
+			add_options_page(__('Related Posts', 'related'), __('Related Posts', 'related'), 'manage_options', 'related.php', array(&$this, 'related_options_page'));
+		}
+		function related_options_page() {
+			// Handle the POST
+			if ( isset( $_POST['form'] ) ) {
+				if ( function_exists('current_user_can') && !current_user_can('manage_options') ) {
+					die(__('Cheatin&#8217; uh?'));
+				}
+				if ( $_POST['form'] == 'show' ) {
+					$showkeys = array();
+					foreach ($_POST as $key => $value) {
+						if ( $key == 'form' ) {
+							continue;
+						}
+						$showkeys[] = str_replace('show_', '', $key);
+					}
+					$showkeys = json_encode($showkeys);
+					update_option( 'related_show', $showkeys );
+				} else if ( $_POST['form'] == 'list' ) {
+					$listkeys = array();
+					foreach ($_POST as $key => $value) {
+						if ( $key == 'form' ) {
+							continue;
+						}
+						$listkeys[] = str_replace('list_', '', $key);
+					}
+					$listkeys = json_encode($listkeys);
+					update_option( 'related_list', $listkeys );
+				}
+			}
+
+			// Make a form to submit
+
+			echo '<div id="poststuff" class="metabox-holder">
+					<div class="widget related-widget" style="max-width:700px;">
+						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.<br />
+							If Any is selected, it will show on any Post Type. If none are selected, Any will still apply.', 'related') . '</h3>';
+
+			$related_show = get_option('related_show');
+			$related_show = json_decode( $related_show );
+			if ( empty( $related_show ) ) {
+				$related_show = array();
+				$related_show[] = 'any';
+				$any = 'checked';
+			} else {
+				foreach ( $related_show as $key ) {
+					if ( $key == 'any' ) {
+						$any = 'checked="checked"';
+					}
+				}
+			}
+			?>
+
+			<div class="misc-pub-section">
+			<form name="related_options_page_show" action="" method="POST">
+				<ul>
+				<li><label for="show_any">
+					<input name="show_any" type="checkbox" id="show_any" <?php echo $any; ?>  />
+					any
+				</label></li>
+				<?php
+				$post_types = get_post_types( '', 'names' );
+				foreach ( $post_types as $post_type ) {
+					if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
+						continue;
+					}
+
+					foreach ( $related_show as $key ) {
+						if ( $key == $post_type ) {
+							$checked = 'checked="checked"';
+						}
+					}
+					?>
+					<li><label for="show_<?php echo $post_type; ?>">
+						<input name="show_<?php echo $post_type; ?>" type="checkbox" id="show_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
+						<?php echo $post_type; ?>
+					</label></li>
+					<?php
+					$checked = ''; // reset
+				}
+				?>
+				<input type="hidden" class="form" value="show" name="form" />
+				<li><input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+				</ul>
+			</form>
+			</div>
+			</div>
+			<?php
+
+			echo '<div class="widget related-widget" style="max-width:700px;">
+						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.<br />
+							If Any is selected, it will list any Post Type. If none are selected, it will still list any Post Type.', 'related') . '</h3>';
+			$any = ''; // reset
+			$related_list = get_option('related_list');
+			$related_list = json_decode( $related_list );
+			if ( empty( $related_list ) ) {
+				$related_list = array();
+				$related_list[] = 'any';
+				$any = 'checked';
+			} else {
+				foreach ( $related_list as $key ) {
+					if ( $key == 'any' ) {
+						$any = 'checked="checked"';
+					}
+				}
+			}
+			?>
+
+			<div class="misc-pub-section">
+			<form name="related_options_page_listed" action="" method="POST">
+				<ul>
+				<li><label for="list_any">
+					<input name="list_any" type="checkbox" id="list_any" <?php echo $any; ?>  />
+					any
+				</label></li>
+				<?php
+				$post_types = get_post_types( '', 'names' );
+				foreach ( $post_types as $post_type ) {
+					if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
+						continue;
+					}
+
+					foreach ( $related_list as $key ) {
+						if ( $key == $post_type ) {
+							$checked = 'checked="checked"';
+						}
+					}
+					?>
+					<li><label for="list_<?php echo $post_type; ?>">
+						<input name="list_<?php echo $post_type; ?>" type="checkbox" id="list_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
+						<?php echo $post_type; ?>
+					</label></li>
+					<?php
+					$checked = ''; // reset
+				}
+				?>
+				<input type="hidden" class="form" value="list" name="form" />
+				<li><input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+				</ul>
+			</form>
+			</div>
+			</div></div>
+			<?php
+		}
 	}
-
-
 
 endif;
 

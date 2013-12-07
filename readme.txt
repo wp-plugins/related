@@ -3,13 +3,13 @@ Contributors: mpol
 Tags: related posts, related, post
 Requires at least: 3.3
 Tested up to: 3.7.1
-Stable tag: 1.2.1
+Stable tag: 1.3
 
-A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
+A simple 'related posts' plugin that lets you select related posts manually.
 
 == Description ==
 
-A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list. Supports any post types in WordPress, including custom ones.
+A simple 'related posts' plugin that lets you select related posts manually. Supports any post types in WordPress, including custom ones.
 
 
 Features:
@@ -83,8 +83,7 @@ Here is an example:
 
 = Who should use this plugin? =
 
-People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts themselves, instead of
-having a list generated automatically like other plugins do, using weird algorithms that often create comical results.
+People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts manually themselves.
 
 = Where does the plugin store its data? =
 
@@ -111,6 +110,11 @@ Yes, it is again actively maintained.
 1. Choosing related posts in the edit post screen
 
 == Changelog ==
+
+= 1.3 =
+- Add options page:
+- Only get shown on selected post types
+- Only list selected post types to select as related post
 
 = 1.2.1 =
 * Add localisation
