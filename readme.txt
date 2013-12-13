@@ -1,6 +1,6 @@
 === Related ===
 Contributors: mpol
-Tags: related posts, related, post, linked posts, linked
+Tags: related posts, related, post, linked posts, linked, widget
 Requires at least: 3.3
 Tested up to: 3.8.1
 Stable tag: 1.4
@@ -18,11 +18,14 @@ Features:
 * Choose from posts, pages or any other post type
 * Support for custom post types
 * Re-order related posts via drag and drop
+* Widget that shows the related posts
 * Custom markup possible, or simply use the default output
 
 The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
-To display the related posts, simply add the following line in your template, inside the WordPress loop.
+To display the related posts, you can use the widget that is included.
+
+If you want more control, simply add the following line in your template, inside the WordPress loop.
 
 	<?php echo $related->show(get_the_ID()); ?>
 
