@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.3.2
+Version: 1.4
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -53,7 +53,7 @@ if (!class_exists('Related')) :
 		// Defines a few static helper values we might need
 		protected function defineConstants() {
 
-			define('RELATED_VERSION', '1.2.1');
+			define('RELATED_VERSION', '1.4');
 			define('RELATED_HOME', 'http://timelord.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -295,10 +295,11 @@ if (!class_exists('Related')) :
 
 			$related_show = get_option('related_show');
 			$related_show = json_decode( $related_show );
+			$any = '';
 			if ( empty( $related_show ) ) {
 				$related_show = array();
 				$related_show[] = 'any';
-				$any = 'checked';
+				$any = 'checked="checked';
 			} else {
 				foreach ( $related_show as $key ) {
 					if ( $key == 'any' ) {
@@ -318,6 +319,7 @@ if (!class_exists('Related')) :
 				</label></li>
 				<?php
 				$post_types = get_post_types( '', 'names' );
+				$checked = '';
 				foreach ( $post_types as $post_type ) {
 					if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
 						continue;
@@ -403,6 +405,9 @@ if (!class_exists('Related')) :
 	}
 
 endif;
+
+/* Include widget */
+include( 'related-widget.php' );
 
 /*
  * related_init

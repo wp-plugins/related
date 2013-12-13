@@ -2,8 +2,8 @@
 Contributors: mpol
 Tags: related posts, related, post, linked posts, linked
 Requires at least: 3.3
-Tested up to: 3.7.1
-Stable tag: 1.3.2
+Tested up to: 3.8.1
+Stable tag: 1.4
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -27,6 +27,10 @@ To display the related posts, simply add the following line in your template, in
 	<?php echo $related->show(get_the_ID()); ?>
 
 For advanced options, see the installation docs.
+
+= Languages =
+
+* nl_NL [Marcel Pol](http://timelord.nl)
 
 == Installation ==
 
@@ -110,6 +114,9 @@ Yes, it is again actively maintained.
 1. Choosing related posts in the edit post screen
 
 == Changelog ==
+
+= 1.4 =
+* Now includes a widget
 
 = 1.3.2 =
 * Move styling to stylesheet
