@@ -2,8 +2,8 @@
 Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget
 Requires at least: 3.3
-Tested up to: 3.8.1
-Stable tag: 1.4
+Tested up to: 3.8
+Stable tag: trunk
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
