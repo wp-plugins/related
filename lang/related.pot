@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-07 19:08+0100\n"
+"POT-Creation-Date: 2013-12-17 13:49+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,18 +49,26 @@ msgstr ""
 msgid "Post Types to show the Related Posts form on."
 msgstr ""
 
-#: related.php:312
+#: related.php:313
 msgid ""
 "If Any is selected, it will show on any Post Type. If none are selected, Any "
 "will still apply."
 msgstr ""
 
-#: related.php:349
+#: related.php:351
 msgid "Post Types to list on the Related Posts forms."
 msgstr ""
 
-#: related.php:367
+#: related.php:369
 msgid ""
 "If Any is selected, it will list any Post Type. If none are selected, it "
 "will still list any Post Type."
+msgstr ""
+
+#: related-widget.php:6
+msgid "Related Posts Widget"
+msgstr ""
+
+#: related-widget.php:76
+msgid "Title"
 msgstr ""
