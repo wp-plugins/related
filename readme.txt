@@ -118,7 +118,7 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
-= 1.4 =
+= 1.4.1 =
 * Update nl_NL
 
 = 1.4 =
