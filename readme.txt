@@ -1,6 +1,6 @@
 === Related ===
 Contributors: mpol
-Tags: related posts, related, post, linked posts, linked, widget, post2post
+Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts
 Requires at least: 3.3
 Tested up to: 3.8
 Stable tag: trunk
