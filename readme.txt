@@ -119,6 +119,9 @@ Yes, it is again actively maintained.
 == Changelog ==
 
 = 1.4 =
+* Update nl_NL
+
+= 1.4 =
 * Now includes a widget
 
 = 1.3.2 =
