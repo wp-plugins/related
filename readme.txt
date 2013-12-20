@@ -108,6 +108,11 @@ Also, you can select on the Options page to not list all post types. This will t
 
 With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
 
+= I add the code to my template, but it breaks my page. =
+
+For some reason this happens on some installs. You can add a <?php global $related; ?> before your code.
+I will investigate why this happens.
+
 = Is this plugin actively maintained? =
 
 Yes, it is again actively maintained.
