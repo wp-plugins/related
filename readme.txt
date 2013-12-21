@@ -27,7 +27,7 @@ To display the related posts, you can use the widget that is included.
 
 If you want more control, simply add the following line in your template, inside the WordPress loop.
 
-	<?php echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show(get_the_ID()); ?>
 
 For advanced options, see the installation docs.
 
@@ -51,11 +51,11 @@ Use the plugin installer built into WordPress to search for the plugin. WordPres
 
 The related posts are displayed by adding
 
-	<?php echo $related->show($post_id); ?>
+	<?php global $related; echo $related->show($post_id); ?>
 
 to your template. Replace `` $post_id `` with a post ID. If you call it within the WordPress loop, you can use
 
-	<?php echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show(get_the_ID()); ?>
 
 You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the
 markup yourself.
@@ -64,7 +64,7 @@ markup yourself.
 
 *Example 1: Using the default output*
 
-	<?php echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show(get_the_ID()); ?>
 
 This can be called within the WordPress loop. It will output a `` <ul> `` list with links.
 
@@ -76,6 +76,7 @@ With the second argument set to true, it will return an array of post objects. U
 Here is an example:
 
 	<?php
+		global $related;
 		$rel = $related->show(get_the_ID(), true);
 
 		// Display the title of each related post
@@ -107,11 +108,6 @@ Also, you can select on the Options page to not list all post types. This will t
 = When I delete the plugin, will it delete the related posts data? =
 
 With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
-
-= I add the code to my template, but it breaks my page. =
-
-For some reason this happens on some installs. You can add a <?php global $related; ?> before your code.
-I will investigate why this happens.
 
 = Is this plugin actively maintained? =
 
