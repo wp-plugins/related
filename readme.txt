@@ -70,7 +70,10 @@ This can be called within the WordPress loop. It will output a `` <ul> `` list w
 
 *Example 2: Returning an array*
 
-	<?php $rel = $related->show(get_the_ID(), true); ?>
+	<?php
+		global $related;
+		$rel = $related->show(get_the_ID(), true);
+	?>
 
 With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup.
 Here is an example:
