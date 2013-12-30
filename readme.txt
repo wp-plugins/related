@@ -119,6 +119,7 @@ Yes, it is again actively maintained.
 == Screenshots ==
 
 1. Choosing related posts in the edit post screen
+2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
 
