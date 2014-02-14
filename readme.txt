@@ -123,6 +123,9 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.4.2 =
+* Fix post update on wp_update_post()
+
 = 1.4.1 =
 * Update nl_NL
 

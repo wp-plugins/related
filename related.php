@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.1
+Version: 1.4.2
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
