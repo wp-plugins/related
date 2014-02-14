@@ -121,11 +121,14 @@ if (!class_exists('Related')) :
 
 			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
-			if (!isset($_POST['related-posts']) || empty($_POST['related-posts'])) :
-				delete_post_meta($id, 'related_posts');
-			else :
-				update_post_meta($id, 'related_posts', $_POST['related-posts']);
-			endif;
+			if( isset($_POST['related-posts']) ) {
+				if ( empty($_POST['related-posts']) ) :
+					delete_post_meta($id, 'related_posts');
+				else :
+					update_post_meta($id, 'related_posts', $_POST['related-posts']);
+				endif;
+			}
+
 		}
 
 
