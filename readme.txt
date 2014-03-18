@@ -2,7 +2,7 @@
 Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts
 Requires at least: 3.3
-Tested up to: 3.8
+Tested up to: 3.8.1
 Stable tag: trunk
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -122,6 +122,9 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.4.3 =
+* Also delete just added post
 
 = 1.4.2 =
 * Fix post update on wp_update_post()
