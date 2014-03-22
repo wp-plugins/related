@@ -123,6 +123,9 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.4.4 =
+* Add settings link to main plugin page
+
 = 1.4.3 =
 * Also delete just added post
 

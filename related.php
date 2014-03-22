@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.3
+Version: 1.4.4
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -53,7 +53,7 @@ if (!class_exists('Related')) :
 		// Defines a few static helper values we might need
 		protected function defineConstants() {
 
-			define('RELATED_VERSION', '1.4.3');
+			define('RELATED_VERSION', '1.4.4');
 			define('RELATED_HOME', 'http://timelord.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -293,7 +293,7 @@ if (!class_exists('Related')) :
 			// Make a form to submit
 
 			echo '<div id="poststuff" class="metabox-holder">
-					<div class="widget related-widget">
+					<div class="related-widget">
 						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.', 'related') . '</h3>';
 
 			$related_show = get_option('related_show');
@@ -302,7 +302,7 @@ if (!class_exists('Related')) :
 			if ( empty( $related_show ) ) {
 				$related_show = array();
 				$related_show[] = 'any';
-				$any = 'checked="checked';
+				$any = 'checked="checked"';
 			} else {
 				foreach ( $related_show as $key ) {
 					if ( $key == 'any' ) {
@@ -350,7 +350,7 @@ if (!class_exists('Related')) :
 			</div>
 			<?php
 
-			echo '<div class="widget related-widget">
+			echo '<div class="related-widget">
 						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.', 'related') . '</h3>';
 			$any = ''; // reset
 			$related_list = get_option('related_list');
@@ -409,8 +409,25 @@ if (!class_exists('Related')) :
 
 endif;
 
+
+/*
+ * related_links
+ * Add Settings link to the main plugin page
+ *
+ */
+
+function related_links( $links, $file ) {
+        if ( $file == plugin_basename( dirname(__FILE__).'/related.php' ) ) {
+                $links[] = '<a href="' . admin_url( 'options-general.php?page=related.php' ) . '">'.__( 'Settings' ).'</a>';
+        }
+        return $links;
+}
+add_filter( 'plugin_action_links', 'related_links', 10, 2 );
+
+
 /* Include widget */
 include( 'related-widget.php' );
+
 
 /*
  * related_init
@@ -427,8 +444,5 @@ function related_init() {
 	$related = new Related();
 }
 add_action('plugins_loaded', 'related_init');
-
-
-
 
 ?>
