@@ -19,11 +19,7 @@ jQuery(document).ready(function($) {
 	});
 
 	$('.related-post a').on('click', function() {
-		var div = $(this).parent();
-
-		div.css('background-color', '#ff0000').fadeOut('normal', function() {
-			div.remove();
-		});
+		related_delete( this );
 		return false;
 	});
 
@@ -32,8 +28,8 @@ jQuery(document).ready(function($) {
 });
 
 /*
- * function related_delete()
- * Function te remove the just added post
+ * related_delete
+ * Function te remove the selected post
  */
 
 function related_delete( a_el ) {

@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.4
+Version: 1.4.5
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -33,7 +33,10 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 if (!class_exists('Related')) :
 	class Related {
 
-		// Constructor
+		/*
+		 * __construct
+		 * Constructor
+		 */
 		public function __construct() {
 
 			// Set some helpful constants
@@ -50,10 +53,12 @@ if (!class_exists('Related')) :
 		}
 
 
-		// Defines a few static helper values we might need
+		/*
+		 * defineConstants
+		 * Defines a few static helper values we might need
+		 */
 		protected function defineConstants() {
-
-			define('RELATED_VERSION', '1.4.4');
+			define('RELATED_VERSION', '1.4.5');
 			define('RELATED_HOME', 'http://timelord.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -61,7 +66,10 @@ if (!class_exists('Related')) :
 		}
 
 
-		// Main function
+		/*
+		 * start
+		 * Main function
+		 */
 		public function start() {
 
 			// Load the scripts
@@ -98,25 +106,31 @@ if (!class_exists('Related')) :
 		}
 
 
-		// Load Javascript
+		/*
+		 * loadScripts
+		 * Load Javascript
+		 */
 		public function loadScripts() {
-
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-sortable');
 			wp_enqueue_script('related-scripts', RELATED_URLPATH .'/scripts.js', false, RELATED_VERSION);
 		}
 
 
-		// Load CSS
+		/*
+		 * loadCSS
+		 * Load CSS
+		 */
 		public function loadCSS() {
-
 			wp_enqueue_style('related-css', RELATED_URLPATH .'/styles.css', false, RELATED_VERSION, 'all');
 		}
 
 
-		// Save related posts when saving the post
+		/*
+		 * save
+		 * Save related posts when saving the post
+		 */
 		public function save($id) {
-
 			global $wpdb;
 
 			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
@@ -132,9 +146,11 @@ if (!class_exists('Related')) :
 		}
 
 
-		// Creates the output on the post screen
+		/*
+		 * displayMetaBox
+		 * Creates the output on the post screen
+		 */
 		public function displayMetaBox() {
-
 			global $post;
 
 			$post_id = $post->ID;
@@ -220,7 +236,10 @@ if (!class_exists('Related')) :
 		}
 
 
-		// The frontend function that is used to display the related post list
+		/*
+		 * show
+		 * The frontend function that is used to display the related post list
+		 */
 		public function show($id, $return = false) {
 
 			global $wpdb;
@@ -257,7 +276,11 @@ if (!class_exists('Related')) :
 			endif;
 		}
 
-		// Adds an option page to Settings.
+
+		/*
+		 * related_options
+		 * Adds an option page to Settings
+		 */
 		function related_options() {
 			add_options_page(__('Related Posts', 'related'), __('Related Posts', 'related'), 'manage_options', 'related.php', array(&$this, 'related_options_page'));
 		}
@@ -291,7 +314,6 @@ if (!class_exists('Related')) :
 			}
 
 			// Make a form to submit
-
 			echo '<div id="poststuff" class="metabox-holder">
 					<div class="related-widget">
 						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.', 'related') . '</h3>';
