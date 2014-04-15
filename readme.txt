@@ -1,16 +1,15 @@
 === Related ===
-Contributors: chipsandtv
-Donate link: https://github.com/matthiassiegel/Related
-Tags: related posts, related, post
-Requires at least: 2.9
-Tested up to: 3.3
-Stable tag: 1.1.1
+Contributors: mpol
+Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, pods
+Requires at least: 3.3
+Tested up to: 3.9.0
+Stable tag: trunk
 
-A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list.
+A simple 'related posts' plugin that lets you select related posts manually.
 
 == Description ==
 
-A simple 'related posts' plugin that lets you select related posts manually instead of automatically generating the list. Supports any post types in WordPress, including custom ones.
+A simple 'related posts' plugin that lets you select related posts manually. Supports any post types in WordPress, including custom ones.
 
 
 Features:
@@ -19,19 +18,22 @@ Features:
 * Choose from posts, pages or any other post type
 * Support for custom post types
 * Re-order related posts via drag and drop
+* Widget that shows the related posts
 * Custom markup possible, or simply use the default output
 
-I wrote the plugin because I wanted to have the option to add related posts to each blog post using a simple but functional plugin without a lot of junk. Unlike other 'related posts' plugins that use algorithms to automatically generate a list of posts, I wanted to be able to select the related posts myself.
+The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
-The plugin targets small and medium sized blogs. On blogs with lots of posts (500+) it might not be very comfortable to choose the posts via select box.
+To display the related posts, you can use the widget that is included.
 
-You can contribute improvements to this plugin by forking it on [GitHub](https://github.com/matthiassiegel/Related).
+If you want more control, simply add the following line in your template, inside the WordPress loop.
 
-To display the related posts, simply add the following line in your template, inside the WordPress loop.
-
-	<?php echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show(get_the_ID()); ?>
 
 For advanced options, see the installation docs.
+
+= Languages =
+
+* nl_NL [Marcel Pol](http://timelord.nl)
 
 == Installation ==
 
@@ -49,33 +51,37 @@ Use the plugin installer built into WordPress to search for the plugin. WordPres
 
 The related posts are displayed by adding
 
-	<?php echo $related->show($post_id); ?>
+	<?php global $related; echo $related->show($post_id); ?>
 
 to your template. Replace `` $post_id `` with a post ID. If you call it within the WordPress loop, you can use
 
-	<?php echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show(get_the_ID()); ?>
 
-You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the 
+You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the
 markup yourself.
 
 **Examples**
 
 *Example 1: Using the default output*
 
-	<?php echo $related->show(get_the_ID()); ?>
-	
+	<?php global $related; echo $related->show(get_the_ID()); ?>
+
 This can be called within the WordPress loop. It will output a `` <ul> `` list with links.
 
 *Example 2: Returning an array*
 
-	<?php $rel = $related->show(get_the_ID(), true); ?>
-	
-With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup. 
+	<?php
+		global $related;
+		$rel = $related->show(get_the_ID(), true);
+	?>
+
+With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup.
 Here is an example:
 
 	<?php
+		global $related;
 		$rel = $related->show(get_the_ID(), true);
-	
+
 		// Display the title of each related post
 		foreach ($rel as $r) :
 			echo $r->post_title . '<br />';
@@ -86,8 +92,7 @@ Here is an example:
 
 = Who should use this plugin? =
 
-People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts themselves, instead of 
-having a list generated automatically like other plugins do, using weird algorithms that often create comical results.
+People who want to list 'related posts' in their blog posts or pages, and want to choose the related posts manually themselves.
 
 = Where does the plugin store its data? =
 
@@ -97,17 +102,11 @@ Data is stored in the existing postmeta table in the WordPress database. No addi
 
 As many as you like, there's no limit.
 
-= WordPress version 2.9 is listed as minimum required version. Any chance it will work with earlier versions? =
+= I have many posts, how can I deal with that in the best way? =
 
-There's a chance it will work with earlier versions, but I haven't tested it.
-
-= I have 500+ posts on my blog and selecting the posts with the one select box isn't very comfortable, lots of scrolling. =
-
-That's true, it isn't ideal for large blogs. This might get improved in future releases, feel free to submit ideas.
-
-= In WordPress 2.9, a strange error appears when I try to delete the plugin. =
-
-Yes, I don't know what the problem is. It's only in WordPress 2.9. Just delete the plugin directory manually from wp-content/plugins.
+There are 2 things that are done or possible.
+By default, the plugin will split the select boxes into max 50 posts, so it's easier to handle for the user.
+Also, you can select on the Options page to not list all post types. This will trim down the number of posts that are listed.
 
 = When I delete the plugin, will it delete the related posts data? =
 
@@ -115,15 +114,55 @@ With version 1.1, all data remains in the database when the plugin files are del
 
 = Is this plugin actively maintained? =
 
-Not very actively, mostly because my focus is on Ruby development, so my interest in WordPress/PHP is limited. However I get quite a few emails from people who enjoy using the plugin, so if there are any major issues I will look into it.
-
-If you're a developer you are encouraged to submit improvements. Just fork it on [GitHub](https://github.com/matthiassiegel/Related) and submit changes. Every now and then I might find time to incorporate improvements and push out a new release.
+Yes, it is again actively maintained.
 
 == Screenshots ==
 
 1. Choosing related posts in the edit post screen
+2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.4.6 =
+* Support Widget Customizer in 3.9
+
+= 1.4.5 =
+* Cleanup duplicate code
+
+= 1.4.4 =
+* Add settings link to main plugin page
+
+= 1.4.3 =
+* Also delete just added post
+
+= 1.4.2 =
+* Fix post update on wp_update_post()
+
+= 1.4.1 =
+* Update nl_NL
+
+= 1.4 =
+* Now includes a widget
+
+= 1.3.2 =
+* Move styling to stylesheet
+
+= 1.3.1 =
+* On blogs with many posts, split the select box in multiple select boxes
+
+= 1.3 =
+* Add options page:
+* Only get shown on selected post types
+* Only list selected post types to select as related post
+
+= 1.2.1 =
+* Add localisation
+* Add nl_NL
+* Only make an instance in the init function
+
+= 1.2 =
+* Don't overwrite default post
+* Switch from jquery.live to jquery.on, requires WP 3.3 at least
 
 = 1.1.1 =
 * Minor rewrites that may prevent interference with other plugins
