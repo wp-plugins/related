@@ -1,8 +1,8 @@
 === Related ===
 Contributors: mpol
-Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts
+Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, pods
 Requires at least: 3.3
-Tested up to: 3.8.1
+Tested up to: 3.9.0
 Stable tag: trunk
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -122,6 +122,9 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.4.6 =
+* Support Widget Customizer in 3.9
 
 = 1.4.5 =
 * Cleanup duplicate code
