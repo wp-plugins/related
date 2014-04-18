@@ -123,6 +123,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.4.7 =
+* No need to add explicit support
+* Rewrite save function, meta_key gets deleted correctly now
+
 = 1.4.6 =
 * Support Widget Customizer in 3.9
 

@@ -3,7 +3,7 @@
 class Related_Widget extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'related_widget', 'description' => __('Related Posts Widget','related'), 'customizer_support' => true );
+		$widget_ops = array('classname' => 'related_widget', 'description' => __('Related Posts Widget','related') );
 		parent::__construct('related_widget', 'Related Posts Widget', $widget_ops);
 		$this->alt_option_name = 'related_widget';
 

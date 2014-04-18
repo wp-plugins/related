@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.6
+Version: 1.4.7
 Author: Marcel Pol
 Author URI: http://timelord.nl
 Text Domain: related
@@ -131,18 +131,19 @@ if (!class_exists('Related')) :
 		 * Save related posts when saving the post
 		 */
 		public function save($id) {
-			global $wpdb;
+			global $pagenow;
 
 			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
-			if( isset($_POST['related-posts']) ) {
-				if ( empty($_POST['related-posts']) ) :
-					delete_post_meta($id, 'related_posts');
-				else :
-					update_post_meta($id, 'related_posts', $_POST['related-posts']);
-				endif;
+			if ( isset($_POST['related-posts']) ) {
+				update_post_meta($id, 'related_posts', $_POST['related-posts']);
 			}
-
+			/* Only delete on post.php page, not on Quick Edit. */
+			if ( empty($_POST['related-posts']) ) {
+				if ( $pagenow == 'post.php' ) {
+					delete_post_meta($id, 'related_posts');
+				}
+			}
 		}
 
 
