@@ -33,7 +33,7 @@ For advanced options, see the installation docs.
 
 = Languages =
 
-* nl_NL [Marcel Pol](http://timelord.nl)
+* nl_NL [Marcel Pol](http://zenoweb.nl)
 
 == Installation ==
 

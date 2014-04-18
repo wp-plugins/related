@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Related
-Plugin URI: http://timelord.nl/wordpress/product/related?lang=en
+Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
 Version: 1.4.7
 Author: Marcel Pol
-Author URI: http://timelord.nl
+Author URI: http://zenoweb.nl
 Text Domain: related
 Domain Path: /lang/
 
@@ -58,8 +58,8 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.4.6');
-			define('RELATED_HOME', 'http://timelord.nl');
+			define('RELATED_VERSION', '1.4.7');
+			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
 			define('RELATED_URLPATH', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)));
