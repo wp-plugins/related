@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.7
+Version: 1.4.8
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -50,6 +50,9 @@ if (!class_exists('Related')) :
 
 			// Adds an option page for the plugin
 			add_action('admin_menu', array(&$this, 'related_options'));
+			
+			// Add the related posts to the content, if set in options
+			add_filter( 'the_content', array($this, 'related_content_filter') );
 		}
 
 
@@ -58,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.4.7');
+			define('RELATED_VERSION', '1.4.8');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -279,6 +282,21 @@ if (!class_exists('Related')) :
 
 
 		/*
+		 * Add the plugin data to the content, if it is set in the options.
+		 */ 
+		public function related_content_filter( $content ) {
+			if ( get_option( 'related_content', 0 ) == 1 ) {
+				global $related;
+				$content .= '<div class="related_content" style="clear:both;">';
+				$content .= $related->show( get_the_ID() );
+				$content .= "</div>";
+			}
+			// otherwise returns the old content
+			return $content;
+		}
+
+
+		/*
 		 * related_options
 		 * Adds an option page to Settings
 		 */
@@ -311,14 +329,32 @@ if (!class_exists('Related')) :
 					}
 					$listkeys = json_encode($listkeys);
 					update_option( 'related_list', $listkeys );
+				} else if ( $_POST['form'] == 'content' ) {
+					if ( isset( $_POST['related_content'] ) ) {
+						if ($_POST['related_content'] == 'on') {
+							update_option('related_content', 1);
+						} else {						
+							update_option('related_content', 0);
+						}
+					} else {						
+						update_option('related_content', 0);
+					}
 				}
-			}
+			} ?>
 
-			// Make a form to submit
-			echo '<div id="poststuff" class="metabox-holder">
+			<div class="wrap">
+
+			<h2 class="nav-tab-wrapper related-nav-tab-wrapper">
+				<a href="#" class="nav-tab nav-tab-active" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>
+				<a href="#" class="nav-tab" rel="related_form"><?php _e('Form', 'related'); ?></a>
+				<a href="#" class="nav-tab" rel="related_content"><?php _e('Content', 'related'); ?></a>
+			</h2>
+
+			<div class="related_options related_post_types active">
+				<div class="poststuff metabox-holder">
 					<div class="related-widget">
-						<h3 class="widget-top">' . __('Post Types to show the Related Posts form on.', 'related') . '</h3>';
-
+						<h3 class="widget-top"><?php _e('Post Types to show the Related Posts form on.', 'related'); ?></h3>
+			<?php
 			$related_show = get_option('related_show');
 			$related_show = json_decode( $related_show );
 			$any = '';
@@ -365,16 +401,21 @@ if (!class_exists('Related')) :
 					$checked = ''; // reset
 				}
 				?>
-				<input type="hidden" class="form" value="show" name="form" />
-				<li><input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+				<li><input type="hidden" class="form" value="show" name="form" />
+					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>
 			</form>
-			</div>
-			</div>
-			<?php
+			</div> <!-- .misc-pub-section -->
+			</div> <!-- .related-widget -->
+			</div> <!-- metabox-holder -->
+			</div> <!-- .related_post_types -->
 
-			echo '<div class="related-widget">
-						<h3 class="widget-top">' . __('Post Types to list on the Related Posts forms.', 'related') . '</h3>';
+
+			<div class="related_options related_form">
+				<div class="poststuff metabox-holder">
+					<div class="related-widget">
+						<h3 class="widget-top"><?php _e('Post Types to list on the Related Posts forms.', 'related'); ?></h3>
+			<?php
 			$any = ''; // reset
 			$related_list = get_option('related_list');
 			$related_list = json_decode( $related_list );
@@ -420,12 +461,40 @@ if (!class_exists('Related')) :
 					$checked = ''; // reset
 				}
 				?>
-				<input type="hidden" class="form" value="list" name="form" />
-				<li><input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+				<li><input type="hidden" class="form" value="list" name="form" />
+					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>
 			</form>
 			</div>
-			</div></div>
+			</div>
+			</div>
+			</div> <!-- .related_post_types -->
+
+
+			<div class="related_options related_content">
+				<div class="poststuff metabox-holder">
+					<div class="related-widget">
+						<h3 class="widget-top"><?php _e('Add the Related Posts to the content.', 'related'); ?></h3>
+		
+			<div class="misc-pub-section">
+			<p><?php _e('If you select to add the Related Posts below the content, it will be added to every display of the content.', 'related'); ?></p>
+			<form name="related_options_page_content" action="" method="POST">
+				<ul>
+					<li><label for="related_content">
+						<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_content', 0) ); ?> />
+						<?php _e('Add to content', 'related'); ?>
+					</label></li>
+					<li><input type="hidden" class="form" value="content" name="form" />
+					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+				</ul>
+			</form>
+			</div>
+			</div>
+			</div>
+			</div> <!-- .related_content -->
+
+
+			</div> <!-- .wrap -->
 			<?php
 		}
 	}

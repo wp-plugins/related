@@ -1,14 +1,14 @@
 # Related.
-# Copyright (C) 2013 Marcel Pol
+# Copyright (C) 2013-2014 Marcel Pol
 # This file is distributed under the same license as the Related package.
-# Marcel Pol <marcel@timelord.nl>, 2013.
+# Marcel Pol <marcel@timelord.nl>, 2013-2014.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-17 13:49+0100\n"
-"PO-Revision-Date: 2013-12-17 13:51+0100\n"
+"POT-Creation-Date: 2014-05-02 13:43+0200\n"
+"PO-Revision-Date: 2014-05-02 13:46+0100\n"
 "Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl_NL\n"
@@ -17,60 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.5.4\n"
 
-#: related.php:90 related.php:94
-msgid "Related posts"
-msgstr "Gerelateerde Berichten"
-
-#: related.php:151
-msgid "Delete"
-msgstr "Verwijderen"
-
-#: related.php:160 related.php:198
-msgid "Select"
-msgstr "Selecteren"
-
-#: related.php:215
-msgid "Select related posts from the list. Drag selected ones to change order."
-msgstr ""
-"Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
-"volgorde te wijzigen."
-
-#: related.php:253
-msgid "Invalid post ID specified"
-msgstr "Ongeldige post ID opgegeven"
-
-#: related.php:259
-msgid "Related Posts"
-msgstr "Gerelateerde Berichten"
-
-#: related.php:265
-msgid "Cheatin&#8217; uh?"
-msgstr "Valsspelen, he?"
-
-#: related.php:294
-msgid "Post Types to show the Related Posts form on."
-msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
-
-#: related.php:313
-msgid ""
-"If Any is selected, it will show on any Post Type. If none are selected, Any "
-"will still apply."
-msgstr ""
-"Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
-"geselecteerd, geldt Any nog steeds."
-
-#: related.php:351
-msgid "Post Types to list on the Related Posts forms."
-msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
-
-#: related.php:369
-msgid ""
-"If Any is selected, it will list any Post Type. If none are selected, it "
-"will still list any Post Type."
-msgstr ""
-"Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
-"geselecteerd, zal het nog steeds ieder Post Type tonen."
-
 #: related-widget.php:6
 msgid "Related Posts Widget"
 msgstr "Gerelateerde Berichten Widget"
@@ -78,3 +24,89 @@ msgstr "Gerelateerde Berichten Widget"
 #: related-widget.php:76
 msgid "Title"
 msgstr "Titel"
+
+#: related.php:101 related.php:105
+msgid "Related posts"
+msgstr "Gerelateerde Berichten"
+
+#: related.php:174
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: related.php:183 related.php:221
+msgid "Select"
+msgstr "Selecteren"
+
+#: related.php:238
+msgid "Select related posts from the list. Drag selected ones to change order."
+msgstr ""
+"Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
+"volgorde te wijzigen."
+
+#: related.php:279
+msgid "Invalid post ID specified"
+msgstr "Ongeldige post ID opgegeven"
+
+#: related.php:304
+msgid "Related Posts"
+msgstr "Gerelateerde Berichten"
+
+#: related.php:310
+msgid "Cheatin&#8217; uh?"
+msgstr "Valsspelen, he?"
+
+#: related.php:348
+msgid "Post types"
+msgstr "Post types"
+
+#: related.php:349
+msgid "Form"
+msgstr "Formulier"
+
+#: related.php:350
+msgid "Content"
+msgstr "Inhoud"
+
+#: related.php:356
+msgid "Post Types to show the Related Posts form on."
+msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
+
+#: related.php:375
+msgid ""
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+"Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
+"geselecteerd, geldt Any nog steeds."
+
+#: related.php:417
+msgid "Post Types to list on the Related Posts forms."
+msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
+
+#: related.php:436
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+"Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
+"geselecteerd, zal het nog steeds ieder Post Type tonen."
+
+#: related.php:477
+msgid "Add the Related Posts to the content."
+msgstr "Voeg de gerelateerde berichten toe aan de inhoud."
+
+#: related.php:480
+msgid ""
+"If you select to add the Related Posts below the content, it will be added "
+"to every display of the content."
+msgstr ""
+"Als je ervoor kiest de geselecteerde berichten toe te voegen aan de inhoud, "
+"wordt het toegevoegd aan elke weergave van de inhoud."
+
+#: related.php:485
+msgid "Add to content"
+msgstr "Voeg aan inhoud toe"
+
+#: related.php:513
+msgid "Settings"
+msgstr "Instellingen"

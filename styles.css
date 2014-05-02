@@ -1,4 +1,7 @@
 
+/* CSS for the Related plugin */
+
+
 /* Metabox */
 .related-post {
   font-size: 11px;
@@ -23,7 +26,16 @@
 	min-width: 500px;
 }
 
+
 /* Options Page */
 .related-widget {
 	max-width: 700px;
+}
+
+/* Tabs */
+.related_options {
+	display: none;
+}
+.related_options.active {
+	display: block;
 }

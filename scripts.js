@@ -1,3 +1,5 @@
+
+
 jQuery(document).ready(function($) {
 
 	$('.related-posts-select').change(function() {
@@ -40,3 +42,21 @@ function related_delete( a_el ) {
 	});
 	return false;
 }
+
+/* 
+ * Select the right tab on the options page
+ * 
+ */
+jQuery(document).ready(function($) {
+	jQuery( '.related-nav-tab-wrapper a' ).on('click', function() {
+		
+		jQuery( '.related_options' ).removeClass( 'active' );
+		jQuery( '.related-nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+
+		var rel = jQuery( this ).attr('rel');
+		jQuery( '.' + rel ).addClass( 'active' );
+		jQuery( this ).addClass( 'nav-tab-active' );
+
+		return false;
+	});
+});

@@ -23,11 +23,12 @@ Features:
 
 The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
-To display the related posts, you can use the widget that is included.
+To display the related posts, there are three options:
 
-If you want more control, simply add the following line in your template, inside the WordPress loop.
-
-	<?php global $related; echo $related->show(get_the_ID()); ?>
+* You can use the widget that is included.
+* Add the following line in your template, inside the WordPress loop:
+  <?php global $related; echo $related->show(get_the_ID()); ?>
+* Use the content filter inside the settings.
 
 For advanced options, see the installation docs.
 
@@ -110,7 +111,8 @@ Also, you can select on the Options page to not list all post types. This will t
 
 = When I delete the plugin, will it delete the related posts data? =
 
-With version 1.1, all data remains in the database when the plugin files are deleted through the plugins page in WordPress. So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
+All data remains in the database when the plugin files are deleted through the plugins page in WordPress. 
+So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
 
 = Is this plugin actively maintained? =
 
@@ -122,6 +124,11 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.4.8 =
+* Add a filter for the content, with an option to use it
+* Option page now uses tabs
+* Update nl_NL
 
 = 1.4.7 =
 * No need to add explicit support
