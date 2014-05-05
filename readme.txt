@@ -26,8 +26,8 @@ The plugin was written to have the option to add related posts to each blog post
 To display the related posts, there are three options:
 
 * You can use the widget that is included.
-* Add the following line in your template, inside the WordPress loop:
-  <?php global $related; echo $related->show(get_the_ID()); ?>
+* Add the following PHP line in your template, inside the WordPress loop:
+  global $related; echo $related->show(get_the_ID());
 * Use the content filter inside the settings.
 
 For advanced options, see the installation docs.
