@@ -125,6 +125,9 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.4.9 =
+* Better naming of variables
+
 = 1.4.8 =
 * Add a filter for the content, with an option to use it
 * Option page now uses tabs

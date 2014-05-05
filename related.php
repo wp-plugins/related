@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.8
+Version: 1.4.9
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -11,7 +11,7 @@ Domain Path: /lang/
 
 
 Copyright 2010-2012  Matthias Siegel  (email: matthias.siegel@gmail.com)
-Copyright 2013       Marcel Pol       (email: marcel@timelord.nl)
+Copyright 2013-2014  Marcel Pol       (email: marcel@timelord.nl)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.4.8');
+			define('RELATED_VERSION', '1.4.9');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -309,7 +309,7 @@ if (!class_exists('Related')) :
 				if ( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					die(__('Cheatin&#8217; uh?'));
 				}
-				if ( $_POST['form'] == 'show' ) {
+				if ( $_POST['form'] == 'related_show' ) {
 					$showkeys = array();
 					foreach ($_POST as $key => $value) {
 						if ( $key == 'form' ) {
@@ -319,7 +319,7 @@ if (!class_exists('Related')) :
 					}
 					$showkeys = json_encode($showkeys);
 					update_option( 'related_show', $showkeys );
-				} else if ( $_POST['form'] == 'list' ) {
+				} else if ( $_POST['form'] == 'related_list' ) {
 					$listkeys = array();
 					foreach ($_POST as $key => $value) {
 						if ( $key == 'form' ) {
@@ -329,7 +329,7 @@ if (!class_exists('Related')) :
 					}
 					$listkeys = json_encode($listkeys);
 					update_option( 'related_list', $listkeys );
-				} else if ( $_POST['form'] == 'content' ) {
+				} else if ( $_POST['form'] == 'related_content' ) {
 					if ( isset( $_POST['related_content'] ) ) {
 						if ($_POST['related_content'] == 'on') {
 							update_option('related_content', 1);
@@ -401,7 +401,7 @@ if (!class_exists('Related')) :
 					$checked = ''; // reset
 				}
 				?>
-				<li><input type="hidden" class="form" value="show" name="form" />
+				<li><input type="hidden" class="form" value="related_show" name="form" />
 					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>
 			</form>
@@ -461,7 +461,7 @@ if (!class_exists('Related')) :
 					$checked = ''; // reset
 				}
 				?>
-				<li><input type="hidden" class="form" value="list" name="form" />
+				<li><input type="hidden" class="form" value="related_list" name="form" />
 					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>
 			</form>
@@ -484,7 +484,7 @@ if (!class_exists('Related')) :
 						<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_content', 0) ); ?> />
 						<?php _e('Add to content', 'related'); ?>
 					</label></li>
-					<li><input type="hidden" class="form" value="content" name="form" />
+					<li><input type="hidden" class="form" value="related_content" name="form" />
 					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>
 			</form>
