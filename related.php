@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.4.9
+Version: 1.5.0
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -305,6 +305,7 @@ if (!class_exists('Related')) :
 		}
 		function related_options_page() {
 			// Handle the POST
+			$active_tab = 'related_show'; /* default tab */
 			if ( isset( $_POST['form'] ) ) {
 				if ( function_exists('current_user_can') && !current_user_can('manage_options') ) {
 					die(__('Cheatin&#8217; uh?'));
@@ -329,6 +330,7 @@ if (!class_exists('Related')) :
 					}
 					$listkeys = json_encode($listkeys);
 					update_option( 'related_list', $listkeys );
+					$active_tab = 'related_list';
 				} else if ( $_POST['form'] == 'related_content' ) {
 					if ( isset( $_POST['related_content'] ) ) {
 						if ($_POST['related_content'] == 'on') {
@@ -339,18 +341,19 @@ if (!class_exists('Related')) :
 					} else {						
 						update_option('related_content', 0);
 					}
+					$active_tab = 'related_content';
 				}
 			} ?>
 
 			<div class="wrap">
 
 			<h2 class="nav-tab-wrapper related-nav-tab-wrapper">
-				<a href="#" class="nav-tab nav-tab-active" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>
-				<a href="#" class="nav-tab" rel="related_form"><?php _e('Form', 'related'); ?></a>
-				<a href="#" class="nav-tab" rel="related_content"><?php _e('Content', 'related'); ?></a>
+				<a href="#" class="nav-tab <?php if ($active_tab == 'related_show') { echo "nav-tab-active";} ?>" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>
+				<a href="#" class="nav-tab <?php if ($active_tab == 'related_list') { echo "nav-tab-active";} ?>" rel="related_form"><?php _e('Form', 'related'); ?></a>
+				<a href="#" class="nav-tab <?php if ($active_tab == 'related_content') { echo "nav-tab-active";} ?>" rel="related_content"><?php _e('Content', 'related'); ?></a>
 			</h2>
 
-			<div class="related_options related_post_types active">
+			<div class="related_options related_post_types <?php if ($active_tab == 'related_show') { echo "active";} ?>">
 				<div class="poststuff metabox-holder">
 					<div class="related-widget">
 						<h3 class="widget-top"><?php _e('Post Types to show the Related Posts form on.', 'related'); ?></h3>
@@ -411,7 +414,7 @@ if (!class_exists('Related')) :
 			</div> <!-- .related_post_types -->
 
 
-			<div class="related_options related_form">
+			<div class="related_options related_form <?php if ($active_tab == 'related_list') { echo "active";} ?>">
 				<div class="poststuff metabox-holder">
 					<div class="related-widget">
 						<h3 class="widget-top"><?php _e('Post Types to list on the Related Posts forms.', 'related'); ?></h3>
@@ -471,7 +474,7 @@ if (!class_exists('Related')) :
 			</div> <!-- .related_post_types -->
 
 
-			<div class="related_options related_content">
+			<div class="related_options related_content <?php if ($active_tab == 'related_content') { echo "active";} ?>">
 				<div class="poststuff metabox-holder">
 					<div class="related-widget">
 						<h3 class="widget-top"><?php _e('Add the Related Posts to the content.', 'related'); ?></h3>

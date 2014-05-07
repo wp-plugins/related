@@ -124,6 +124,9 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.0 =
+* Remember tab after submit
+
 = 1.4.9 =
 * Better naming of variables
 
