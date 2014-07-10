@@ -124,6 +124,9 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.1 =
+* Show header above the related posts in content filter
+
 = 1.5.0 =
 * Remember tab after submit
 
