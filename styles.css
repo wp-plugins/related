@@ -1,3 +1,8 @@
+
+/* CSS for the Related plugin */
+
+
+/* Metabox */
 .related-post {
   font-size: 11px;
   margin: 6px 6px 8px;
@@ -5,7 +10,7 @@
   background: #f1f1f1;
   border: 1px solid #dfdfdf;
   cursor: pointer;
-  
+
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
@@ -15,4 +20,22 @@
 }
 .related-post a {
   float: right;
+}
+
+.related-posts-select {
+	min-width: 500px;
+}
+
+
+/* Options Page */
+.related-widget {
+	max-width: 700px;
+}
+
+/* Tabs */
+.related_options {
+	display: none;
+}
+.related_options.active {
+	display: block;
 }
