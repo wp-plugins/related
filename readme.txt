@@ -2,7 +2,7 @@
 Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, pods
 Requires at least: 3.3
-Tested up to: 3.9.0
+Tested up to: 3.9.2
 Stable tag: trunk
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -123,6 +123,9 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.5.2 =
+* Only show header if there are related posts (content filter)
 
 = 1.5.1 =
 * Show header above the related posts in content filter

@@ -287,10 +287,13 @@ if (!class_exists('Related')) :
 		public function related_content_filter( $content ) {
 			if ( get_option( 'related_content', 0 ) == 1 ) {
 				global $related;
-				$content .= '<div class="related_content" style="clear:both;">';
-				$content .= '<h3 class="widget-title">' . __('Related Posts', 'related') . '</h3>';
-				$content .= $related->show( get_the_ID() );
-				$content .= "</div>";
+				$related_posts = $related->show( get_the_ID() );
+				if ( $related_posts ) {
+					$content .= '<div class="related_content" style="clear:both;">';
+					$content .= '<h3 class="widget-title">' . __('Related Posts', 'related') . '</h3>';
+					$content .= $related_posts;
+					$content .= "</div>";
+				}
 			}
 			// otherwise returns the old content
 			return $content;
