@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.5.2
+Version: 1.5.3
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.5.2');
+			define('RELATED_VERSION', '1.5.3');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -290,7 +290,9 @@ if (!class_exists('Related')) :
 				$related_posts = $related->show( get_the_ID() );
 				if ( $related_posts ) {
 					$content .= '<div class="related_content" style="clear:both;">';
-					$content .= '<h3 class="widget-title">' . __('Related Posts', 'related') . '</h3>';
+					$content .= '<h3 class="widget-title">';
+					$content .= get_option('related_content_title', __('Related Posts', 'related'));
+					$content .= '</h3>';
 					$content .= $related_posts;
 					$content .= "</div>";
 				}
@@ -320,7 +322,7 @@ if (!class_exists('Related')) :
 						if ( $key == 'form' ) {
 							continue;
 						}
-						$showkeys[] = str_replace('show_', '', $key);
+						$showkeys[] = str_replace('show_', '', sanitize_text_field($key));
 					}
 					$showkeys = json_encode($showkeys);
 					update_option( 'related_show', $showkeys );
@@ -330,7 +332,7 @@ if (!class_exists('Related')) :
 						if ( $key == 'form' ) {
 							continue;
 						}
-						$listkeys[] = str_replace('list_', '', $key);
+						$listkeys[] = str_replace('list_', '', sanitize_text_field($key));
 					}
 					$listkeys = json_encode($listkeys);
 					update_option( 'related_list', $listkeys );
@@ -344,6 +346,11 @@ if (!class_exists('Related')) :
 						}
 					} else {						
 						update_option('related_content', 0);
+					}
+					if ( isset( $_POST['related_content_title'] ) ) {
+						if ($_POST['related_content_title'] != '') {
+							update_option( 'related_content_title', sanitize_text_field($_POST['related_content_title']) );
+						}
 					}
 					$active_tab = 'related_content';
 				}
@@ -491,6 +498,12 @@ if (!class_exists('Related')) :
 						<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_content', 0) ); ?> />
 						<?php _e('Add to content', 'related'); ?>
 					</label></li>
+					<li>
+						<?php $related_content_title = get_option('related_content_title'); ?>
+						<label for="related_content_title"><?php _e('Title to show above the related posts: ', 'related'); ?><br />
+						<input name="related_content_title" type="text" id="related_content_title" value="<?php echo get_option('related_content_title', __('Related Posts', 'related')); ?>" />
+					</label>
+					</li>
 					<li><input type="hidden" class="form" value="related_content" name="form" />
 					<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
 				</ul>

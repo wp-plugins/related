@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-02 13:43+0200\n"
-"PO-Revision-Date: 2014-05-02 13:46+0100\n"
+"POT-Creation-Date: 2014-08-13 16:40+0200\n"
+"PO-Revision-Date: 2014-08-13 16:41+0100\n"
 "Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: nl_NL\n"
@@ -47,31 +47,31 @@ msgstr ""
 msgid "Invalid post ID specified"
 msgstr "Ongeldige post ID opgegeven"
 
-#: related.php:304
+#: related.php:294 related.php:310 related.php:504
 msgid "Related Posts"
 msgstr "Gerelateerde Berichten"
 
-#: related.php:310
+#: related.php:317
 msgid "Cheatin&#8217; uh?"
 msgstr "Valsspelen, he?"
 
-#: related.php:348
+#: related.php:362
 msgid "Post types"
 msgstr "Post types"
 
-#: related.php:349
+#: related.php:363
 msgid "Form"
 msgstr "Formulier"
 
-#: related.php:350
+#: related.php:364
 msgid "Content"
 msgstr "Inhoud"
 
-#: related.php:356
+#: related.php:370
 msgid "Post Types to show the Related Posts form on."
 msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
 
-#: related.php:375
+#: related.php:389
 msgid ""
 "If Any is selected, it will show on any Post Type. If none are selected, Any "
 "will still apply."
@@ -79,11 +79,11 @@ msgstr ""
 "Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
 "geselecteerd, geldt Any nog steeds."
 
-#: related.php:417
+#: related.php:431
 msgid "Post Types to list on the Related Posts forms."
 msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
 
-#: related.php:436
+#: related.php:450
 msgid ""
 "If Any is selected, it will list any Post Type. If none are selected, it "
 "will still list any Post Type."
@@ -91,11 +91,11 @@ msgstr ""
 "Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
 "geselecteerd, zal het nog steeds ieder Post Type tonen."
 
-#: related.php:477
+#: related.php:491
 msgid "Add the Related Posts to the content."
 msgstr "Voeg de gerelateerde berichten toe aan de inhoud."
 
-#: related.php:480
+#: related.php:494
 msgid ""
 "If you select to add the Related Posts below the content, it will be added "
 "to every display of the content."
@@ -103,10 +103,14 @@ msgstr ""
 "Als je ervoor kiest de geselecteerde berichten toe te voegen aan de inhoud, "
 "wordt het toegevoegd aan elke weergave van de inhoud."
 
-#: related.php:485
+#: related.php:499
 msgid "Add to content"
 msgstr "Voeg aan inhoud toe"
 
-#: related.php:513
+#: related.php:503
+msgid "Title to show above the related posts: "
+msgstr "Titel om boven de gerelateerde berichten te tonen: "
+
+#: related.php:533
 msgid "Settings"
 msgstr "Instellingen"

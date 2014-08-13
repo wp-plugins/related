@@ -124,6 +124,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.3 =
+* Add option for content filter title
+* sanitize values in update_option()
+
 = 1.5.2 =
 * Only show header if there are related posts (content filter)
 
