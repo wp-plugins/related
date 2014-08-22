@@ -124,6 +124,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.4 =
+* Compatibility with Qtranslate and MQtranslate
+* Don't show posts with status 'trash'.
+
 = 1.5.3 =
 * Add option for content filter title
 * sanitize values in update_option()
