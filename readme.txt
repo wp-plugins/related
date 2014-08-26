@@ -84,7 +84,7 @@ Here is an example:
 
 		// Display the title of each related post
 		foreach ($rel as $r) :
-			echo $r->post_title . '<br />';
+			echo get_the_title($r->ID) . '<br />';
 		endforeach;
 	?>
 
@@ -125,79 +125,101 @@ Yes, it is again actively maintained.
 == Changelog ==
 
 = 1.5.4 =
+* 2014-08-22
 * Compatibility with Qtranslate and MQtranslate
 * Don't show posts with status 'trash'.
 
 = 1.5.3 =
+* 2014-08-13
 * Add option for content filter title
 * sanitize values in update_option()
 
 = 1.5.2 =
+* 2014-08-08
 * Only show header if there are related posts (content filter)
 
 = 1.5.1 =
+* 2014-05-10
 * Show header above the related posts in content filter
 
 = 1.5.0 =
+* 2014-05-07
 * Remember tab after submit
 
 = 1.4.9 =
+* 2014-05-05
 * Better naming of variables
 
 = 1.4.8 =
+* 2014-05-02
 * Add a filter for the content, with an option to use it
 * Option page now uses tabs
 * Update nl_NL
 
 = 1.4.7 =
+* 2014-04-18
 * No need to add explicit support
 * Rewrite save function, meta_key gets deleted correctly now
 
 = 1.4.6 =
+* 2014-04-15
 * Support Widget Customizer in 3.9
 
 = 1.4.5 =
+* 2014-03-23
 * Cleanup duplicate code
 
 = 1.4.4 =
+* 2014-03-22
 * Add settings link to main plugin page
 
 = 1.4.3 =
+* 2014-03-18
 * Also delete just added post
 
 = 1.4.2 =
+* 2014-02-14
 * Fix post update on wp_update_post()
 
 = 1.4.1 =
+* 2013-12-17
 * Update nl_NL
 
 = 1.4 =
+* 2013-12-13
 * Now includes a widget
 
 = 1.3.2 =
+* 2013-12-07
 * Move styling to stylesheet
 
 = 1.3.1 =
+* 2013-12-07
 * On blogs with many posts, split the select box in multiple select boxes
 
 = 1.3 =
+* 2013-12-07
 * Add options page:
 * Only get shown on selected post types
 * Only list selected post types to select as related post
 
 = 1.2.1 =
+* 2013-11-09
 * Add localisation
 * Add nl_NL
 * Only make an instance in the init function
 
 = 1.2 =
+* 2013-11-09
 * Don't overwrite default post
 * Switch from jquery.live to jquery.on, requires WP 3.3 at least
 
 = 1.1.1 =
+* 2011-09-21
 * Minor rewrites that may prevent interference with other plugins
 
 = 1.1 =
+* 2011-09-21
 * Bugfix: related posts are now correctly saved (deleted) when all related posts are removed from the current post
 * Feature: all post types in WordPress are now supported (including custom ones)
 * Improvement: select box now sorts posts by title and displays post type
@@ -206,6 +228,7 @@ Yes, it is again actively maintained.
 * Improvement: general code quality improvements
 
 = 1.0 =
+* 2010-04-12
 * Initial release. No known issues.
 
 == Upgrade Notice ==
