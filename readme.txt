@@ -88,6 +88,22 @@ Here is an example:
 		endforeach;
 	?>
 
+If you want to run it with a real WordPress loop, then use it as follows. You can then use functions like the_content or the_excerpt. 
+But make sure you don't use the content filter for related posts, because you might get an endless stream of related posts that are related to each other :). 
+
+	<?php
+		global $related;
+		$rel = $related->show(get_the_ID(), true);
+
+		// Display the title and excerpt of each related post
+		foreach ($rel as $r) :
+			setup_postdata( $r );			
+			echo $r->post_title . '<br />';
+			the_excerpt();
+		endforeach;
+		wp_reset_postdata();		
+	?>
+
 == Frequently Asked Questions ==
 
 = Who should use this plugin? =
