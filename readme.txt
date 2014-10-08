@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, pods
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: trunk
+Stable tag: 1.5.4
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -88,8 +88,8 @@ Here is an example:
 		endforeach;
 	?>
 
-If you want to run it with a real WordPress loop, then use it as follows. You can then use functions like the_content or the_excerpt. 
-But make sure you don't use the content filter for related posts, because you might get an endless stream of related posts that are related to each other :). 
+If you want to run it with a real WordPress loop, then use it as follows. You can then use functions like the_content or the_excerpt.
+But make sure you don't use the content filter for related posts, because you might get an endless stream of related posts that are related to each other :).
 
 	<?php
 		global $related;
@@ -97,11 +97,11 @@ But make sure you don't use the content filter for related posts, because you mi
 
 		// Display the title and excerpt of each related post
 		foreach ($rel as $r) :
-			setup_postdata( $r );			
+			setup_postdata( $r );
 			echo $r->post_title . '<br />';
 			the_excerpt();
 		endforeach;
-		wp_reset_postdata();		
+		wp_reset_postdata();
 	?>
 
 == Frequently Asked Questions ==
@@ -126,7 +126,7 @@ Also, you can select on the Options page to not list all post types. This will t
 
 = When I delete the plugin, will it delete the related posts data? =
 
-All data remains in the database when the plugin files are deleted through the plugins page in WordPress. 
+All data remains in the database when the plugin files are deleted through the plugins page in WordPress.
 So if you accidentally delete the plugin, or if you decide to install it again later, your data should still be there.
 
 = Is this plugin actively maintained? =
