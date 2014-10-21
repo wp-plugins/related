@@ -54,11 +54,11 @@ Use the plugin installer built into WordPress to search for the plugin. WordPres
 
 The related posts are displayed by adding
 
-	<?php global $related; echo $related->show($post_id); ?>
+	<?php global $related; echo $related->show( $post_id ); ?>
 
 to your template. Replace `` $post_id `` with a post ID. If you call it within the WordPress loop, you can use
 
-	<?php global $related; echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show( get_the_ID() ); ?>
 
 You have the option of either outputting a pre-formatted list or returning a PHP array of related posts to customise the
 markup yourself.
