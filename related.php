@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.5.4
+Version: 1.5.5
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -50,7 +50,7 @@ if (!class_exists('Related')) :
 
 			// Adds an option page for the plugin
 			add_action('admin_menu', array(&$this, 'related_options'));
-			
+
 			// Add the related posts to the content, if set in options
 			add_filter( 'the_content', array($this, 'related_content_filter') );
 		}
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.5.4');
+			define('RELATED_VERSION', '1.5.5');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -247,7 +247,7 @@ if (!class_exists('Related')) :
 		public function show($id, $return = false) {
 
 			global $wpdb;
-			
+
 			/* Compatibility for Qtranslate and MQtranslate, and the get_permalink function */
 			$plugin = "qtranslate/qtranslate.php";
 			$m_plugin = "mqtranslate/mqtranslate.php";
@@ -293,7 +293,7 @@ if (!class_exists('Related')) :
 
 		/*
 		 * Add the plugin data to the content, if it is set in the options.
-		 */ 
+		 */
 		public function related_content_filter( $content ) {
 			if ( get_option( 'related_content', 0 ) == 1 ) {
 				global $related;
@@ -351,10 +351,10 @@ if (!class_exists('Related')) :
 					if ( isset( $_POST['related_content'] ) ) {
 						if ($_POST['related_content'] == 'on') {
 							update_option('related_content', 1);
-						} else {						
+						} else {
 							update_option('related_content', 0);
 						}
-					} else {						
+					} else {
 						update_option('related_content', 0);
 					}
 					if ( isset( $_POST['related_content_title'] ) ) {
@@ -499,7 +499,7 @@ if (!class_exists('Related')) :
 				<div class="poststuff metabox-holder">
 					<div class="related-widget">
 						<h3 class="widget-top"><?php _e('Add the Related Posts to the content.', 'related'); ?></h3>
-		
+
 			<div class="misc-pub-section">
 			<p><?php _e('If you select to add the Related Posts below the content, it will be added to every display of the content.', 'related'); ?></p>
 			<form name="related_options_page_content" action="" method="POST">

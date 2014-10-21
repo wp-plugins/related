@@ -1,9 +1,9 @@
 === Related ===
 Contributors: mpol
-Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, pods
+Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 1.5.4
+Stable tag: 1.5.5
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -34,6 +34,9 @@ For advanced options, see the installation docs.
 = Languages =
 
 * nl_NL [Marcel Pol](http://zenoweb.nl)
+* sr_RS [Borisa Djuraskovic](http://www.webhostinghub.com)
+
+If you care to translate this plugin into your own language, please send the translated po file to marcel at zenoweb dot nl.
 
 == Installation ==
 
@@ -64,7 +67,7 @@ markup yourself.
 
 *Example 1: Using the default output*
 
-	<?php global $related; echo $related->show(get_the_ID()); ?>
+	<?php global $related; echo $related->show( get_the_ID() ); ?>
 
 This can be called within the WordPress loop. It will output a `` <ul> `` list with links.
 
@@ -72,7 +75,7 @@ This can be called within the WordPress loop. It will output a `` <ul> `` list w
 
 	<?php
 		global $related;
-		$rel = $related->show(get_the_ID(), true);
+		$rel = $related->show( get_the_ID(), true );
 	?>
 
 With the second argument set to true, it will return an array of post objects. Use it to generate your own custom markup.
@@ -80,11 +83,11 @@ Here is an example:
 
 	<?php
 		global $related;
-		$rel = $related->show(get_the_ID(), true);
+		$rel = $related->show( get_the_ID(), true );
 
 		// Display the title of each related post
-		foreach ($rel as $r) :
-			echo get_the_title($r->ID) . '<br />';
+		foreach ( $rel as $r ) :
+			echo get_the_title( $r->ID ) . '<br />';
 		endforeach;
 	?>
 
@@ -93,12 +96,12 @@ But make sure you don't use the content filter for related posts, because you mi
 
 	<?php
 		global $related;
-		$rel = $related->show(get_the_ID(), true);
+		$rel = $related->show( get_the_ID(), true );
 
 		// Display the title and excerpt of each related post
-		foreach ($rel as $r) :
+		foreach ( $rel as $r ) :
 			setup_postdata( $r );
-			echo $r->post_title . '<br />';
+			echo get_the_title( $r->ID ) . '<br />';
 			the_excerpt();
 		endforeach;
 		wp_reset_postdata();
