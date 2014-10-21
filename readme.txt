@@ -143,6 +143,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.5 =
+* 2014-10-21
+* Add sr_RS Serbian Language (Borisa Djuraskovic)
+
 = 1.5.4 =
 * 2014-08-22
 * Compatibility with Qtranslate and MQtranslate
