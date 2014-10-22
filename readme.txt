@@ -86,9 +86,15 @@ Here is an example:
 		$rel = $related->show( get_the_ID(), true );
 
 		// Display the title of each related post
-		foreach ( $rel as $r ) :
-			echo get_the_title( $r->ID ) . '<br />';
-		endforeach;
+		if( is_array( $rel ) && count( $rel ) > 0 ) {
+			foreach ( $rel as $r ) {
+				if ( is_object( $r ) ) {
+					if ($r->post_status != 'trash') {
+						echo get_the_title( $r->ID ) . '<br />';
+					}
+				}
+			}
+		}
 	?>
 
 If you want to run it with a real WordPress loop, then use it as follows. You can then use functions like the_content or the_excerpt.
@@ -99,12 +105,18 @@ But make sure you don't use the content filter for related posts, because you mi
 		$rel = $related->show( get_the_ID(), true );
 
 		// Display the title and excerpt of each related post
-		foreach ( $rel as $r ) :
-			setup_postdata( $r );
-			echo get_the_title( $r->ID ) . '<br />';
-			the_excerpt();
-		endforeach;
-		wp_reset_postdata();
+		if( is_array( $rel ) && count( $rel ) > 0 ) {
+			foreach ( $rel as $r ) {
+				if ( is_object( $r ) ) {
+					if ($r->post_status != 'trash') {
+						setup_postdata( $r );
+						echo get_the_title( $r->ID ) . '<br />';
+						the_excerpt();
+					}
+				}
+			}
+			wp_reset_postdata();
+		}
 	?>
 
 == Frequently Asked Questions ==
@@ -142,6 +154,10 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+= 1.5.6 =
+* 2014-10-22
+* Test if the metakey really holds values and avoid PHP Warnings
+* Improved examples in Readme
 
 = 1.5.5 =
 * 2014-10-21

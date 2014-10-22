@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.5.5
+Version: 1.5.6
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.5.5');
+			define('RELATED_VERSION', '1.5.6');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -272,15 +272,19 @@ if (!class_exists('Related')) :
 
 					// Otherwise return a formatted list
 					else :
-						$list = '<ul class="related-posts">';
-						foreach ($rel as $r) :
-							if ($r->post_status != 'trash') {
-								$list .= '<li><a href="' . get_permalink($r->ID) . '">' . get_the_title($r->ID) . '</a></li>';
-							}
-						endforeach;
-						$list .= '</ul>';
+						if ( is_array( $rel ) && count( $rel ) > 0 ) {
+							$list = '<ul class="related-posts">';
+							foreach ($rel as $r) :
+								if ( is_object( $r ) ) {
+									if ($r->post_status != 'trash') {
+										$list .= '<li><a href="' . get_permalink($r->ID) . '">' . get_the_title($r->ID) . '</a></li>';
+									}
+								}
+							endforeach;
+							$list .= '</ul>';
 
-						return $list;
+							return $list;
+						}
 					endif;
 				else :
 					return false;
