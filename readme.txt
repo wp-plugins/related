@@ -2,8 +2,8 @@
 Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
-Tested up to: 4.0
-Stable tag: 1.5.6
+Tested up to: 4.1
+Stable tag: 1.5.7
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
