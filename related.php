@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.5.6
+Version: 1.5.7
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.5.6');
+			define('RELATED_VERSION', '1.5.7');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -87,16 +87,8 @@ if (!class_exists('Related')) :
 			if ( empty( $related_show ) ) {
 				$related_show = array();
 				$related_show[] = 'any';
-			} else {
-				foreach ( $related_show as $post_type ) {
-					if ( $post_type == 'any' ) {
-						$related_show = array();
-						$related_show[] = 'any';
-						break;
-					}
-				}
 			}
-			if ( $related_show[0] == 'any' ) {
+			if ( in_array( 'any', $related_show ) ) {
 				foreach (get_post_types() as $post_type) :
 					add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
 				endforeach;
@@ -117,6 +109,7 @@ if (!class_exists('Related')) :
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-sortable');
 			wp_enqueue_script('related-scripts', RELATED_URLPATH .'/scripts.js', false, RELATED_VERSION);
+			wp_enqueue_script('related-chosen', RELATED_URLPATH .'/chosen/chosen.jquery.min.js', false, RELATED_VERSION);
 		}
 
 
@@ -126,6 +119,7 @@ if (!class_exists('Related')) :
 		 */
 		public function loadCSS() {
 			wp_enqueue_style('related-css', RELATED_URLPATH .'/styles.css', false, RELATED_VERSION, 'all');
+			wp_enqueue_style('related-css-chosen', RELATED_URLPATH .'/chosen/chosen.min.css', false, RELATED_VERSION, 'all');
 		}
 
 
@@ -159,7 +153,7 @@ if (!class_exists('Related')) :
 
 			$post_id = $post->ID;
 
-			echo '<div id="related-posts">';
+			echo '<p>' . __('Choose related posts. You can drag-and-drop them into the desired order:', 'related' ) . '</p><div id="related-posts">';
 
 			// Get related posts if existing
 			$related = get_post_meta($post_id, 'related_posts', true);
@@ -167,8 +161,12 @@ if (!class_exists('Related')) :
 			if (!empty($related)) :
 				foreach($related as $r) :
 					$p = get_post($r);
+
+
 					echo '
 						<div class="related-post" id="related-post-' . $r . '">
+
+
 							<input type="hidden" name="related-posts[]" value="' . $r . '">
 							<span class="related-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
 							<a href="#">' . __('Delete', 'related' ) . '</a>
@@ -176,67 +174,89 @@ if (!class_exists('Related')) :
 				endforeach;
 			endif;
 
+			/* First option should be empty with a data placeholder for text.
+			 * The jQuery call allow_single_deselect makes it possible to empty the selection
+			 */
 			echo '
 				</div>
 				<p>
-					<select class="related-posts-select" name="related-posts-select">
-						<option value="0">' . __('Select', 'related' ) . '</option>';
+					<select class="related-posts-select" name="related-posts-select" data-placeholder="' . __('Choose a related post... ', 'related' ) . '" class="chosen-select">';
+
+			echo '<option value="0"></option>';
+
 
 			$related_list = get_option('related_list');
 			$related_list = json_decode( $related_list );
+
 			if ( empty( $related_list ) ) {
 				$related_list = array();
 				$related_list[] = 'any';
+			}
+
+
+			/*
+			 * If in Settings 'any' is set it will just list the options in the select-box
+			 * If specific posttypes are set, it will show each posttype in an optgroup in the select-box
+			 */
+
+			if ( in_array( 'any', $related_list ) ) {
+
+				$query = array(
+					'nopaging' => true,
+					'post__not_in' => array($post_id),
+					'post_status' => 'publish',
+					'posts_per_page' => -1,
+					'post_type' => 'any',
+					'orderby' => 'title',
+					'order' => 'ASC'
+				);
+				$p = new WP_Query($query);
+
+				foreach ($p->posts as $thePost) {
+					?>
+					<option value="<?php echo $thePost->ID; ?>">
+						<?php echo $thePost->post_title . ' (' . ucfirst(get_post_type($thePost->ID)) . ')'; ?>
+					</option>
+					<?php
+				}
+
 			} else {
+
 				foreach ( $related_list as $post_type ) {
-					if ( $post_type == 'any' ) {
-						$related_list = array();
-						$related_list[] = 'any';
-						break;
-					}
+
+					$query = array(
+						'nopaging' => true,
+						'post__not_in' => array($post_id),
+						'post_status' => 'publish',
+						'posts_per_page' => -1,
+						'post_type' => $post_type,
+						'orderby' => 'title',
+						'order' => 'ASC'
+					);
+					$p = new WP_Query($query);
+
+					echo '<optgroup label="'. $post_type .'">';
+
+						foreach ($p->posts as $thePost) {
+							?>
+							<option value="<?php echo $thePost->ID; ?>">
+								<?php echo  $thePost->post_title; ?>
+							</option>
+							<?php
+						}
+
+					echo '</optgroup>';
+
 				}
+
 			}
-
-			$query = array(
-				'nopaging' => true,
-				'post__not_in' => array($post_id),
-				'post_status' => 'publish',
-				'posts_per_page' => -1,
-				'post_type' => $related_list,
-				'orderby' => 'title',
-				'order' => 'ASC'
-			);
-
-			$p = new WP_Query($query);
-
-			$count = count($p->posts);
-			$counter = 1;
-			foreach ($p->posts as $thePost) {
-				if ( is_int( $counter / 50 ) ) {
-					echo '
-						</select>
-					</p>
-					<p>
-						<select class="related-posts-select" name="related-posts-select">
-							<option value="0">' . __('Select', 'related' ) . '</option>';
-				}
-				?>
-				<option value="<?php
-					echo $thePost->ID; ?>"><?php echo
-					$thePost->post_title.' ('.ucfirst(get_post_type($thePost->ID)).')'; ?></option>
-				<?php
-				$counter++;
-			}
-
 			wp_reset_query();
 			wp_reset_postdata();
 
 			echo '
 					</select>
-				</p>
-				<p>' .
-					__('Select related posts from the list. Drag selected ones to change order.', 'related' )
-				. '</p>';
+				</p>';
+
 		}
 
 
@@ -571,4 +591,3 @@ function related_init() {
 }
 add_action('plugins_loaded', 'related_init');
 
-?>

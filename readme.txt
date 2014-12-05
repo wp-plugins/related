@@ -136,7 +136,7 @@ As many as you like, there's no limit.
 = I have many posts, how can I deal with that in the best way? =
 
 There are 2 things that are done or possible.
-By default, the plugin will split the select boxes into max 50 posts, so it's easier to handle for the user.
+The Javascript Chosen.js is being used so you can easily navigate through the select-box.
 Also, you can select on the Options page to not list all post types. This will trim down the number of posts that are listed.
 
 = When I delete the plugin, will it delete the related posts data? =
@@ -154,6 +154,13 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.5.7 =
+* 2014-12-05
+* Use chosen.js for easy select-boxes (thanks rembem).
+* Use in_array instead of looping with foreach.
+* Update nl_NL.
+
 = 1.5.6 =
 * 2014-10-22
 * Test if the metakey really holds values and avoid PHP Warnings

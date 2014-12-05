@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-13 16:40+0200\n"
+"POT-Creation-Date: 2014-12-05 13:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,93 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: related.php:93 related.php:97
+msgid "Related posts"
+msgstr ""
+
+#: related.php:156
+msgid ""
+"Choose related posts. You can drag-and-drop them into the desired order:"
+msgstr ""
+
+#: related.php:172
+msgid "Delete"
+msgstr ""
+
+#: related.php:183
+msgid "Choose a related post... "
+msgstr ""
+
+#: related.php:313
+msgid "Invalid post ID specified"
+msgstr ""
+
+#: related.php:328 related.php:344 related.php:538
+msgid "Related Posts"
+msgstr ""
+
+#: related.php:351
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: related.php:396
+msgid "Post types"
+msgstr ""
+
+#: related.php:397
+msgid "Form"
+msgstr ""
+
+#: related.php:398
+msgid "Content"
+msgstr ""
+
+#: related.php:404
+msgid "Post Types to show the Related Posts form on."
+msgstr ""
+
+#: related.php:423
+msgid ""
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+
+#: related.php:465
+msgid "Post Types to list on the Related Posts forms."
+msgstr ""
+
+#: related.php:484
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+
+#: related.php:525
+msgid "Add the Related Posts to the content."
+msgstr ""
+
+#: related.php:528
+msgid ""
+"If you select to add the Related Posts below the content, it will be added "
+"to every display of the content."
+msgstr ""
+
+#: related.php:533
+msgid "Add to content"
+msgstr ""
+
+#: related.php:537
+msgid "Title to show above the related posts: "
+msgstr ""
+
+#: related.php:567
+msgid "Settings"
+msgstr ""
+
 #: related-widget.php:6
 msgid "Related Posts Widget"
 msgstr ""
 
 #: related-widget.php:76
 msgid "Title"
-msgstr ""
-
-#: related.php:101 related.php:105
-msgid "Related posts"
-msgstr ""
-
-#: related.php:174
-msgid "Delete"
-msgstr ""
-
-#: related.php:183 related.php:221
-msgid "Select"
-msgstr ""
-
-#: related.php:238
-msgid "Select related posts from the list. Drag selected ones to change order."
-msgstr ""
-
-#: related.php:279
-msgid "Invalid post ID specified"
-msgstr ""
-
-#: related.php:294 related.php:310 related.php:504
-msgid "Related Posts"
-msgstr ""
-
-#: related.php:317
-msgid "Cheatin&#8217; uh?"
-msgstr ""
-
-#: related.php:362
-msgid "Post types"
-msgstr ""
-
-#: related.php:363
-msgid "Form"
-msgstr ""
-
-#: related.php:364
-msgid "Content"
-msgstr ""
-
-#: related.php:370
-msgid "Post Types to show the Related Posts form on."
-msgstr ""
-
-#: related.php:389
-msgid ""
-"If Any is selected, it will show on any Post Type. If none are selected, Any "
-"will still apply."
-msgstr ""
-
-#: related.php:431
-msgid "Post Types to list on the Related Posts forms."
-msgstr ""
-
-#: related.php:450
-msgid ""
-"If Any is selected, it will list any Post Type. If none are selected, it "
-"will still list any Post Type."
-msgstr ""
-
-#: related.php:491
-msgid "Add the Related Posts to the content."
-msgstr ""
-
-#: related.php:494
-msgid ""
-"If you select to add the Related Posts below the content, it will be added "
-"to every display of the content."
-msgstr ""
-
-#: related.php:499
-msgid "Add to content"
-msgstr ""
-
-#: related.php:503
-msgid "Title to show above the related posts: "
-msgstr ""
-
-#: related.php:533
-msgid "Settings"
 msgstr ""
