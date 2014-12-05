@@ -180,7 +180,7 @@ if (!class_exists('Related')) :
 			echo '
 				</div>
 				<p>
-					<select class="related-posts-select" name="related-posts-select" data-placeholder="' . __('Choose a related post... ', 'related' ) . '" class="chosen-select">';
+					<select class="related-posts-select chosen-select" name="related-posts-select" data-placeholder="' . __('Choose a related post... ', 'related' ) . '">';
 
 			echo '<option value="0"></option>';
 
