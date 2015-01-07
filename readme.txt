@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related posts, related, post, linked posts, linked, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.5.7
+Stable tag: 1.5.8
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -154,6 +154,10 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.5.8 =
+* 2015-01-07
+* Only show the content filter on single posts, not on blog.
 
 = 1.5.7 =
 * 2014-12-05
