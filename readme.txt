@@ -155,6 +155,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.5.9 =
+* 2015-02-28
+* Support attachments by showing posts with post_status 'inherit' as well.
+
 = 1.5.8 =
 * 2015-01-07
 * Only show the content filter on single posts, not on blog.

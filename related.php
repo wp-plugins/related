@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.5.8
+Version: 1.5.9
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -11,7 +11,7 @@ Domain Path: /lang/
 
 
 Copyright 2010-2012  Matthias Siegel  (email: matthias.siegel@gmail.com)
-Copyright 2013-2014  Marcel Pol       (email: marcel@timelord.nl)
+Copyright 2013-2015  Marcel Pol       (email: marcel@timelord.nl)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.5.8');
+			define('RELATED_VERSION', '1.5.9');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -195,8 +195,9 @@ if (!class_exists('Related')) :
 
 
 			/*
-			 * If in Settings 'any' is set it will just list the options in the select-box
-			 * If specific posttypes are set, it will show each posttype in an optgroup in the select-box
+			 * If in Settings 'any' is set it will just list the options in the select-box.
+			 * If specific posttypes are set, it will show each posttype in an optgroup in the select-box.
+			 * Also fetch attachments by setting post_status to 'inherit' as well.
 			 */
 
 			if ( in_array( 'any', $related_list ) ) {
@@ -204,7 +205,7 @@ if (!class_exists('Related')) :
 				$query = array(
 					'nopaging' => true,
 					'post__not_in' => array($post_id),
-					'post_status' => 'publish',
+					'post_status' => 'publish, inherit',
 					'posts_per_page' => -1,
 					'post_type' => 'any',
 					'orderby' => 'title',
@@ -227,7 +228,7 @@ if (!class_exists('Related')) :
 					$query = array(
 						'nopaging' => true,
 						'post__not_in' => array($post_id),
-						'post_status' => 'publish',
+						'post_status' => 'publish, inherit',
 						'posts_per_page' => -1,
 						'post_type' => $post_type,
 						'orderby' => 'title',
@@ -563,10 +564,10 @@ endif;
  */
 
 function related_links( $links, $file ) {
-        if ( $file == plugin_basename( dirname(__FILE__).'/related.php' ) ) {
-                $links[] = '<a href="' . admin_url( 'options-general.php?page=related.php' ) . '">'.__( 'Settings' ).'</a>';
-        }
-        return $links;
+	if ( $file == plugin_basename( dirname(__FILE__).'/related.php' ) ) {
+		$links[] = '<a href="' . admin_url( 'options-general.php?page=related.php' ) . '">'.__( 'Settings' ).'</a>';
+	}
+	return $links;
 }
 add_filter( 'plugin_action_links', 'related_links', 10, 2 );
 
