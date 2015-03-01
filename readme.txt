@@ -15,11 +15,12 @@ A simple 'related posts' plugin that lets you select related posts manually. Sup
 Features:
 
 * Add related posts to your blog posts, pages etc.
-* Choose from posts, pages or any other post type
-* Support for custom post types
-* Re-order related posts via drag and drop
-* Widget that shows the related posts
-* Custom markup possible, or simply use the default output
+* Choose from posts, pages or any other post type.
+* Support for custom post types.
+* Re-order related posts via drag and drop.
+* Widget that shows the related posts.
+* Custom markup possible, or simply use the default output.
+* Support for multilang plugins, like WPML and Qtranslate.
 
 The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
@@ -154,6 +155,11 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.6.0 =
+* 2015-03-01
+* Support Qtranslate-X plugin.
+* Place settingspage in own php-file.
 
 = 1.5.9 =
 * 2015-02-28
