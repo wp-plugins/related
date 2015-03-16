@@ -19,7 +19,7 @@ function related_options_page() {
 	$active_tab = 'related_show'; /* default tab */
 	if ( isset( $_POST['form'] ) ) {
 		if ( function_exists('current_user_can') && !current_user_can('manage_options') ) {
-			die(__('Cheatin&#8217; uh?'));
+			die(__('Cheatin&#8217; uh?','related' ));
 		}
 		if ( $_POST['form'] == 'related_show' ) {
 			$showkeys = array();
@@ -121,7 +121,7 @@ function related_options_page() {
 		}
 		?>
 		<li><input type="hidden" class="form" value="related_show" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit','related' ); ?>"/></li>
 		</ul>
 	</form>
 	</div> <!-- .misc-pub-section -->
@@ -181,7 +181,7 @@ function related_options_page() {
 		}
 		?>
 		<li><input type="hidden" class="form" value="related_list" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
 		</ul>
 	</form>
 	</div>
@@ -210,7 +210,7 @@ function related_options_page() {
 			</label>
 			</li>
 			<li><input type="hidden" class="form" value="related_content" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit' ); ?>"/></li>
+			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
 		</ul>
 	</form>
 	</div>

@@ -156,6 +156,11 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.6.1 =
+* 2015-03-16
+* Use our text-domain everywhere.
+* Update pot and nl_NL
+
 = 1.6.0 =
 * 2015-03-01
 * Support Qtranslate-X plugin.

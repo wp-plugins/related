@@ -4,7 +4,7 @@ class Related_Widget extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'related_widget', 'description' => __('Related Posts Widget','related') );
-		parent::__construct('related_widget', 'Related Posts Widget', $widget_ops);
+		parent::__construct('related_widget', __('Related Posts Widget','related'), $widget_ops);
 		$this->alt_option_name = 'related_widget';
 
 		add_action( 'save_post', array(&$this, 'flush_widget_cache') );
@@ -29,7 +29,7 @@ class Related_Widget extends WP_Widget {
 		ob_start();
 		extract($args);
 
-		$title	= apply_filters('widget_title', empty($instance['title']) ? 'Related Posts' : $instance['title'], $instance, $this->id_base);
+		$title	= apply_filters('widget_title', empty($instance['title']) ? __('Related Posts','related') : $instance['title'], $instance, $this->id_base);
 
 		if ( is_singular() ) {
 			global $related;
@@ -66,13 +66,13 @@ class Related_Widget extends WP_Widget {
 	}
 
 	function form( $instance ) {
-    	/*
-    	 * Set Default Value for widget form
-    	 */
-    	$default_value	=	array( "title"=> "Related Posts" );
-    	$instance		=	wp_parse_args( (array) $instance, $default_value );
-
+		/*
+		 * Set Default Value for widget form
+		 */
+		$default_value	=	array( "title"=> __('Related Posts','related') );
+		$instance		=	wp_parse_args( (array) $instance, $default_value );
 		$title = isset($instance['title']) ? esc_attr($instance['title']) : ''; ?>
+
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title', 'related'); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" /></p><?php
 	}
