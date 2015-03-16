@@ -35,6 +35,7 @@ For advanced options, see the installation docs.
 = Languages =
 
 * nl_NL [Marcel Pol](http://zenoweb.nl)
+* fa_IR [Mohsen Pahlevanzadeh](http://www.chpert.net/)
 * sr_RS [Borisa Djuraskovic](http://www.webhostinghub.com)
 
 If you care to translate this plugin into your own language, please send the translated po file to marcel at zenoweb dot nl.
@@ -155,6 +156,10 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.6.2 =
+* 2015-03-16
+* Add fa_IR (Thanks Mohsen Pahlevanzadeh).
 
 = 1.6.1 =
 * 2015-03-16

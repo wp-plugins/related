@@ -1,7 +1,7 @@
 # Related.
-# Copyright (C) 2013-2014 Marcel Pol
+# Copyright (C) 2013-2015 Marcel Pol
 # This file is distributed under the same license as the Related package.
-# Marcel Pol <marcel@timelord.nl>, 2013-2014.
+# Marcel Pol <marcel@timelord.nl>, 2013-2015.
 #
 msgid ""
 msgstr ""
