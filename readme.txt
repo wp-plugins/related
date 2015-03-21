@@ -4,6 +4,7 @@ Tags: related, post, related post, related posts, related content, similar posts
 Requires at least: 3.3
 Tested up to: 4.1
 Stable tag: 1.6.2
+License: GPLv2 or later
 
 A simple 'related posts' plugin that lets you select related posts manually.
 
@@ -35,6 +36,7 @@ For advanced options, see the installation docs.
 = Languages =
 
 * nl_NL [Marcel Pol](http://zenoweb.nl)
+* de_DE [Eckart Schmidt](http://altoplan.de)
 * fa_IR [Mohsen Pahlevanzadeh](http://www.chpert.net/)
 * sr_RS [Borisa Djuraskovic](http://www.webhostinghub.com)
 
@@ -156,6 +158,10 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 1.6.3 =
+* 2015-03-21
+* Add de_DE (Thanks Eckart Schmidt).
 
 = 1.6.2 =
 * 2015-03-16
