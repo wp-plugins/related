@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related, post, related post, related posts, related content, similar posts, link, linked, linked post, linked posts, internal links, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
 Tested up to: 4.1
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv2 or later
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -28,8 +28,8 @@ The plugin was written to have the option to add related posts to each blog post
 To display the related posts, there are three options:
 
 * You can use the widget that is included.
-* Add PHP code to your template, see the installation docs.
 * Use the content filter inside the settings.
+* Add PHP code to your template, see the installation docs.
 
 For advanced options, see the installation docs.
 
