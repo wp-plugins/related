@@ -1,0 +1,121 @@
+# Related.
+# Copyright (C) 2015 Mohsen Pahlevanzadeh
+# This file is distributed under the same license as the Related package.
+#
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: RELATED\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-05 13:16+0100\n"
+"PO-Revision-Date: 2015-03-16 19:11+0100\n"
+"Last-Translator: Mohsen Pahlevanzadeh <mohsen@pahlevanzadeh.org>\n"
+"Language-Team: http://chpert.net\n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: related.php:93 related.php:97
+msgid "Related posts"
+msgstr "پست‌های مربوطه"
+
+#: related.php:156
+msgid ""
+"Choose related posts. You can drag-and-drop them into the desired order:"
+msgstr ""
+"پست‌های مربوطه‌ را انتخاب نمایید.شما می‌توانید آنها را مورد نظر خود Drag-and-"
+"Drop کنید:"
+
+#: related.php:172
+msgid "Delete"
+msgstr "پاک کردن"
+
+#: related.php:183
+msgid "Choose a related post... "
+msgstr "یک پست مربوطه را انتخاب نمایید..."
+
+#: related.php:313
+msgid "Invalid post ID specified"
+msgstr "پست ID مشخص شده نا معتبر است."
+
+#: related.php:328 related.php:344 related.php:538
+msgid "Related Posts"
+msgstr "پست‌های مربوطه"
+
+#: related.php:351
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: related.php:396
+msgid "Post types"
+msgstr "انواع پست"
+
+#: related.php:397
+msgid "Form"
+msgstr "فرم"
+
+#: related.php:398
+msgid "Content"
+msgstr "محتوا"
+
+#: page-related.php:124 page-related.php:184 page-related.php:213
+msgid "Submit"
+msgstr "ارسال"
+
+#: related.php:404
+msgid "Post Types to show the Related Posts form on."
+msgstr "انواع پست برای نمایش پست‌های مربوطه بر روی فرم."
+
+#: related.php:423
+msgid ""
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+"اگر Any انتحاب شود، نمایش بر روی انواع پست بکار می‌رود. و اگر چیز انتحاب نشود "
+"Any بکار گزفته می‌شود."
+
+#: related.php:465
+msgid "Post Types to list on the Related Posts forms."
+msgstr "انوع پست برای لیست شدن بر روی فرم پست‌های مربوطه."
+
+#: related.php:484
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+"اگر Any انتخاب شود،هر گونه نوع پست لیست می‌شود.و اگر نه هر گونه پست دریگر هم "
+"لیست می‌شود."
+
+#: related.php:525
+msgid "Add the Related Posts to the content."
+msgstr "پست مربوطه را به محتوا اضافه نمایید."
+
+#: related.php:528
+msgid ""
+"If you select to add the Related Posts below the content, it will be added "
+"to every display of the content."
+msgstr ""
+"اگر شمابرای پست‌های مربوطه زیر محتواانتخاب کنید، آنگاه در هر محتوایی به نمایش "
+"در خواهد آمد."
+
+#: related.php:533
+msgid "Add to content"
+msgstr "اضافه کردن محتوا"
+
+#: related.php:537
+msgid "Title to show above the related posts: "
+msgstr "تیتری برای نمایش پست‌های مربوطه بالا:"
+
+#: related.php:567
+msgid "Settings"
+msgstr "تنظیمات"
+
+#: related-widget.php:6
+msgid "Related Posts Widget"
+msgstr "ابزارک پست‌های مربوطه"
+
+#: related-widget.php:76
+msgid "Title"
+msgstr "تیتر"
