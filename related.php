@@ -73,10 +73,10 @@ if (!class_exists('Related')) :
 		public function start() {
 
 			// Load the scripts
-			add_action('admin_print_scripts', array(&$this, 'loadScripts'));
+			add_action('admin_enqueue_scripts', array(&$this, 'loadScripts'));
 
 			// Load the CSS
-			add_action('admin_print_styles', array(&$this, 'loadCSS'));
+			add_action('admin_enqueue_scripts', array(&$this, 'loadCSS'));
 
 			// Adds a meta box for related posts to the edit screen of each post type in WordPress
 			$related_show = get_option('related_show');
@@ -105,8 +105,8 @@ if (!class_exists('Related')) :
 		public function loadScripts() {
 			wp_enqueue_script('jquery-ui-core');
 			wp_enqueue_script('jquery-ui-sortable');
-			wp_enqueue_script('related-scripts', RELATED_URLPATH .'/scripts.js', false, RELATED_VERSION);
-			wp_enqueue_script('related-chosen', RELATED_URLPATH .'/chosen/chosen.jquery.min.js', false, RELATED_VERSION);
+			wp_enqueue_script('related-scripts', RELATED_URLPATH .'/scripts.js', false, RELATED_VERSION, true);
+			wp_enqueue_script('related-chosen', RELATED_URLPATH .'/chosen/chosen.jquery.min.js', false, RELATED_VERSION, true);
 		}
 
 

@@ -159,6 +159,11 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.6.4 =
+* 2015-03-26
+* Use admin_enqueue_scripts function.
+* Load admin scripts in footer.
+
 = 1.6.3 =
 * 2015-03-21
 * Add de_DE (Thanks Eckart Schmidt).
