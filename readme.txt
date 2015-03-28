@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related, post, related post, related posts, related content, similar posts, link, linked, linked post, linked posts, internal links, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
 Tested up to: 4.2
-Stable tag: 1.6.3
+Stable tag: 1.6.4
 License: GPLv2 or later
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -16,12 +16,13 @@ A simple 'related posts' plugin that lets you select related posts manually. Sup
 Features:
 
 * Add related posts to your blog posts, pages etc.
-* Choose from posts, pages or any other post type.
-* Support for custom post types.
+* Choose from posts, pages or custom post types.
 * Re-order related posts via drag and drop.
-* Widget that shows the related posts.
-* Custom markup possible, or simply use the default output.
-* Support for multilang plugins, like WPML and Qtranslate.
+* Lightweight in code and database-requests.
+* Includes Widget that shows the related posts.
+* List of posts can also be added to the content of your post.
+* Custom markup possible, build your own caroussel or anything you fancy.
+* Support for multilanguage plugins, like WPML and Qtranslate-X.
 
 The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
