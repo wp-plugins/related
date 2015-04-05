@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 1.6.4
+Version: 1.7.0
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -58,7 +58,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '1.6.4');
+			define('RELATED_VERSION', '1.7.0');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -162,8 +162,6 @@ if (!class_exists('Related')) :
 
 					echo '
 						<div class="related-post" id="related-post-' . $r . '">
-
-
 							<input type="hidden" name="related-posts[]" value="' . $r . '">
 							<span class="related-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
 							<a href="#">' . __('Delete', 'related' ) . '</a>
@@ -185,69 +183,54 @@ if (!class_exists('Related')) :
 			$related_list = get_option('related_list');
 			$related_list = json_decode( $related_list );
 
-			if ( empty( $related_list ) ) {
+			if ( empty( $related_list ) || in_array( 'any', $related_list ) ) {
+				// list all the post_types
 				$related_list = array();
-				$related_list[] = 'any';
+
+				$post_types = get_post_types( '', 'names' );
+				foreach ( $post_types as $post_type ) {
+					if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
+						continue;
+					}
+					$related_list[] = $post_type;
+				}
 			}
 
+			foreach ( $related_list as $post_type ) {
 
-			/*
-			 * If in Settings 'any' is set it will just list the options in the select-box.
-			 * If specific posttypes are set, it will show each posttype in an optgroup in the select-box.
-			 * Also fetch attachments by setting post_status to 'inherit' as well.
-			 */
+				echo '<optgroup label="'. $post_type .'">';
 
-			if ( in_array( 'any', $related_list ) ) {
-
-				$query = array(
+				$r = array(
+					'depth' => 0,
+					'child_of' => 0,
+					'selected' => 0,
+					'echo' => 1,
+					'id' => '',
+					'show_option_none' => '',
+					'show_option_no_change' => '',
+					'option_none_value' => '',
+					'value_field' => 'ID',
 					'nopaging' => true,
-					'post__not_in' => array($post_id),
-					'post_status' => 'publish, inherit',
 					'posts_per_page' => -1,
-					'post_type' => 'any',
 					'orderby' => 'title',
-					'order' => 'ASC'
+					'order' => 'ASC',
+					'post_type' => $post_type,
+					'post_status' => 'publish, inherit',
 				);
-				$p = new WP_Query($query);
 
-				foreach ($p->posts as $thePost) {
-					?>
-					<option value="<?php echo $thePost->ID; ?>">
-						<?php echo $thePost->post_title . ' (' . ucfirst(get_post_type($thePost->ID)) . ')'; ?>
-					</option>
-					<?php
+				$posts = get_posts( $r );
+
+				if ( ! empty( $posts ) ) {
+					$args = array($posts, $r['depth'], $r);
+
+					$walker = new Walker_RelatedDropdown;
+					echo call_user_func_array( array( $walker, 'walk' ), $args );
 				}
 
-			} else {
+				echo '</optgroup>';
 
-				foreach ( $related_list as $post_type ) {
+			} // endforeach
 
-					$query = array(
-						'nopaging' => true,
-						'post__not_in' => array($post_id),
-						'post_status' => 'publish, inherit',
-						'posts_per_page' => -1,
-						'post_type' => $post_type,
-						'orderby' => 'title',
-						'order' => 'ASC'
-					);
-					$p = new WP_Query($query);
-
-					echo '<optgroup label="'. $post_type .'">';
-
-						foreach ($p->posts as $thePost) {
-							?>
-							<option value="<?php echo $thePost->ID; ?>">
-								<?php echo  $thePost->post_title; ?>
-							</option>
-							<?php
-						}
-
-					echo '</optgroup>';
-
-				}
-
-			}
 			wp_reset_query();
 			wp_reset_postdata();
 
@@ -337,6 +320,60 @@ if (!class_exists('Related')) :
 	}
 
 endif;
+
+
+/**
+ * Create HTML dropdown list of hierarchical post_types.
+ * Returns the list of <option>'s for the select dropdown.
+ */
+class Walker_RelatedDropdown extends Walker {
+	/**
+	 * @see Walker::$tree_type
+	 * @since 2.1.0
+	 * @var string
+	 */
+	public $tree_type = 'page';
+
+	/**
+	 * @see Walker::$db_fields
+	 * @since 2.1.0
+	 * @todo Decouple this
+	 * @var array
+	 */
+	public $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
+
+	/**
+	 * @see Walker::start_el()
+	 * @since 2.1.0
+	 *
+	 * @param string $output Passed by reference. Used to append additional content.
+	 * @param object $page   Page data object.
+	 * @param int    $depth  Depth of page in reference to parent pages. Used for padding.
+	 * @param int $id
+	 */
+	public function start_el( &$output, $page, $depth = 0, $args = array(), $id = 0 ) {
+		$pad = str_repeat('&nbsp;', $depth * 3);
+
+		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $page->ID ) . "\">";
+
+		$title = $page->post_title;
+		if ( '' === $title ) {
+			$title = sprintf( __( '#%d (no title)', 'related' ), $page->ID );
+		}
+
+		/**
+		 * Filter the page title when creating an HTML drop-down list of pages.
+		 *
+		 * @since 3.1.0
+		 *
+		 * @param string $title Page title.
+		 * @param object $page  Page data object.
+		 */
+		$title = apply_filters( 'list_pages', $title, $page );
+		$output .= $pad . esc_html( $title );
+		$output .= "</option>\n";
+	}
+}
 
 
 /*

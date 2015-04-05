@@ -160,6 +160,12 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 1.7.0 =
+* 2015-04-05
+* Add indentation for hierarchical posts in dropdown.
+* Add walker for that dropdown.
+* Use get_posts instead of WP_Query.
+
 = 1.6.4 =
 * 2015-03-26
 * Use admin_enqueue_scripts function.
