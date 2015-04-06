@@ -160,6 +160,11 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0 =
+* 2015-04-06
+* Add duplicate plugin Related-Doubled-Up.
+* Small cleanups in get_posts args.
+
 = 1.7.0 =
 * 2015-04-05
 * Add indentation for hierarchical posts in dropdown.

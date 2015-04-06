@@ -201,15 +201,6 @@ if (!class_exists('Related')) :
 				echo '<optgroup label="'. $post_type .'">';
 
 				$r = array(
-					'depth' => 0,
-					'child_of' => 0,
-					'selected' => 0,
-					'echo' => 1,
-					'id' => '',
-					'show_option_none' => '',
-					'show_option_no_change' => '',
-					'option_none_value' => '',
-					'value_field' => 'ID',
 					'nopaging' => true,
 					'posts_per_page' => -1,
 					'orderby' => 'title',
@@ -221,7 +212,7 @@ if (!class_exists('Related')) :
 				$posts = get_posts( $r );
 
 				if ( ! empty( $posts ) ) {
-					$args = array($posts, $r['depth'], $r);
+					$args = array($posts, 0, $r);
 
 					$walker = new Walker_RelatedDropdown;
 					echo call_user_func_array( array( $walker, 'walk' ), $args );
