@@ -8,13 +8,13 @@
 /*
  * Adds an option page to Settings
  */
-function related_options() {
-	add_options_page(__('Related Posts', 'related'), __('Related Posts', 'related'), 'manage_options', 'related.php', 'related_options_page');
+function related_du_options() {
+	add_options_page(__('Related Posts (Doubled Up)', 'related'), __('Related Posts (Doubled Up)', 'related'), 'manage_options', 'related_du.php', 'related_du_options_page');
 }
-add_action('admin_menu', 'related_options');
+add_action('admin_menu', 'related_du_options');
 
 
-function related_options_page() {
+function related_du_options_page() {
 	// Handle the POST
 	$active_tab = 'related_show'; /* default tab */
 	if ( isset( $_POST['form'] ) ) {
@@ -30,7 +30,7 @@ function related_options_page() {
 				$showkeys[] = str_replace('show_', '', sanitize_text_field($key));
 			}
 			$showkeys = json_encode($showkeys);
-			update_option( 'related_show', $showkeys );
+			update_option( 'related_du_show', $showkeys );
 		} else if ( $_POST['form'] == 'related_list' ) {
 			$listkeys = array();
 			foreach ($_POST as $key => $value) {
@@ -40,21 +40,21 @@ function related_options_page() {
 				$listkeys[] = str_replace('list_', '', sanitize_text_field($key));
 			}
 			$listkeys = json_encode($listkeys);
-			update_option( 'related_list', $listkeys );
+			update_option( 'related_du_list', $listkeys );
 			$active_tab = 'related_list';
 		} else if ( $_POST['form'] == 'related_content' ) {
 			if ( isset( $_POST['related_content'] ) ) {
 				if ($_POST['related_content'] == 'on') {
-					update_option('related_content', 1);
+					update_option('related_du_content', 1);
 				} else {
-					update_option('related_content', 0);
+					update_option('related_du_content', 0);
 				}
 			} else {
-				update_option('related_content', 0);
+				update_option('related_du_content', 0);
 			}
 			if ( isset( $_POST['related_content_title'] ) ) {
 				if ($_POST['related_content_title'] != '') {
-					update_option( 'related_content_title', sanitize_text_field($_POST['related_content_title']) );
+					update_option( 'related_du_content_title', sanitize_text_field($_POST['related_content_title']) );
 				}
 			}
 			$active_tab = 'related_content';
@@ -63,7 +63,7 @@ function related_options_page() {
 
 	<div class="wrap">
 
-	<h2><?php _e('Related Posts', 'related'); ?></h2>
+	<h2><?php _e('Related Posts (Doubled Up)', 'related'); ?></h2>
 
 	<h2 class="nav-tab-wrapper related-nav-tab-wrapper">
 		<a href="#" class="nav-tab <?php if ($active_tab == 'related_show') { echo "nav-tab-active";} ?>" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>
@@ -76,7 +76,7 @@ function related_options_page() {
 			<div class="related-widget">
 				<h3 class="widget-top"><?php _e('Post Types to show the Related Posts form on.', 'related'); ?></h3>
 	<?php
-	$related_show = get_option('related_show');
+	$related_show = get_option('related_du_show');
 	$related_show = json_decode( $related_show );
 	$any = '';
 	if ( empty( $related_show ) ) {
@@ -138,7 +138,7 @@ function related_options_page() {
 				<h3 class="widget-top"><?php _e('Post Types to list on the Related Posts forms.', 'related'); ?></h3>
 	<?php
 	$any = ''; // reset
-	$related_list = get_option('related_list');
+	$related_list = get_option('related_du_list');
 	$related_list = json_decode( $related_list );
 	if ( empty( $related_list ) ) {
 		$related_list = array();
@@ -202,13 +202,13 @@ function related_options_page() {
 	<form name="related_options_page_content" action="" method="POST">
 		<ul>
 			<li><label for="related_content">
-				<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_content', 0) ); ?> />
+				<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_du_content', 0) ); ?> />
 				<?php _e('Add to content', 'related'); ?>
 			</label></li>
 			<li>
 				<?php $related_content_title = get_option('related_content_title'); ?>
 				<label for="related_content_title"><?php _e('Title to show above the related posts: ', 'related'); ?><br />
-				<input name="related_content_title" type="text" id="related_content_title" value="<?php echo get_option('related_content_title', __('Related Posts', 'related')); ?>" />
+				<input name="related_content_title" type="text" id="related_content_title" value="<?php echo get_option('related_du_content_title', __('Related Posts', 'related')); ?>" />
 			</label>
 			</li>
 			<li><input type="hidden" class="form" value="related_content" name="form" />

@@ -3,7 +3,7 @@ Contributors: mpol
 Tags: related, post, related post, related posts, related content, similar posts, link, linked, linked post, linked posts, internal links, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
 Tested up to: 4.2
-Stable tag: 1.7.0
+Stable tag: 2.0.0
 License: GPLv2 or later
 
 A simple 'related posts' plugin that lets you select related posts manually.
@@ -23,6 +23,7 @@ Features:
 * List of posts can also be added to the content of your post.
 * Custom markup possible, build your own caroussel or anything you fancy.
 * Support for multilanguage plugins, like WPML and Qtranslate-X.
+* Duplicate plugin Related (Doubled Up) is included to build a second list.
 
 The plugin was written to have the option to add related posts to each blog post using a simple but functional plugin. You can select the related posts yourself manually.
 
@@ -124,6 +125,14 @@ But make sure you don't use the content filter for related posts, because you mi
 		}
 	?>
 
+
+Using the default output from the Related (Doubled Up) plugin:
+
+	<?php global $related_du; echo $related_du->show( get_the_ID() ); ?>
+
+This can be called within the WordPress loop. It will output a `` <ul> `` list with links.
+
+
 == Frequently Asked Questions ==
 
 = Who should use this plugin? =
@@ -160,10 +169,11 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
-= 2.0 =
-* 2015-04-06
-* Add duplicate plugin Related-Doubled-Up.
+= 2.0.0 =
+* 2015-04-08
+* Add duplicate plugin Related (Doubled Up).
 * Small cleanups in get_posts args.
+* Update pot, nl_NL.
 
 = 1.7.0 =
 * 2015-04-05
