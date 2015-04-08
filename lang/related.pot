@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-16 13:19+0100\n"
+"POT-Creation-Date: 2015-04-06 15:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,98 +17,118 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: page-related.php:12 page-related.php:209 related.php:327
-#: related-widget.php:32 related-widget.php:72
+#: page-related.php:12 page-related.php:66 page-related.php:211
+#: page-related_du.php:211 related-widget.php:32 related-widget.php:72
+#: related.php:301 related_du-widget.php:32 related_du-widget.php:72
+#: related_du.php:290
 msgid "Related Posts"
 msgstr ""
 
-#: page-related.php:22
+#: page-related.php:22 page-related_du.php:22
 msgid "Cheatin&#8217; uh?"
 msgstr ""
 
-#: page-related.php:67
+#: page-related.php:69 page-related_du.php:69
 msgid "Post types"
 msgstr ""
 
-#: page-related.php:68
+#: page-related.php:70 page-related_du.php:70
 msgid "Form"
 msgstr ""
 
-#: page-related.php:69
+#: page-related.php:71 page-related_du.php:71
 msgid "Content"
 msgstr ""
 
-#: page-related.php:75
+#: page-related.php:77 page-related_du.php:77
 msgid "Post Types to show the Related Posts form on."
 msgstr ""
 
-#: page-related.php:94
+#: page-related.php:96 page-related_du.php:96
 msgid ""
 "If Any is selected, it will show on any Post Type. If none are selected, Any "
 "will still apply."
 msgstr ""
 
-#: page-related.php:124 page-related.php:184 page-related.php:213
+#: page-related.php:126 page-related.php:186 page-related.php:215
+#: page-related_du.php:126 page-related_du.php:186 page-related_du.php:215
 msgid "Submit"
 msgstr ""
 
-#: page-related.php:136
+#: page-related.php:138 page-related_du.php:138
 msgid "Post Types to list on the Related Posts forms."
 msgstr ""
 
-#: page-related.php:155
+#: page-related.php:157 page-related_du.php:157
 msgid ""
 "If Any is selected, it will list any Post Type. If none are selected, it "
 "will still list any Post Type."
 msgstr ""
 
-#: page-related.php:196
+#: page-related.php:198 page-related_du.php:198
 msgid "Add the Related Posts to the content."
 msgstr ""
 
-#: page-related.php:199
+#: page-related.php:201 page-related_du.php:201
 msgid ""
 "If you select to add the Related Posts below the content, it will be added "
 "to every display of the content."
 msgstr ""
 
-#: page-related.php:204
+#: page-related.php:206 page-related_du.php:206
 msgid "Add to content"
 msgstr ""
 
-#: page-related.php:208
+#: page-related.php:210 page-related_du.php:210
 msgid "Title to show above the related posts: "
 msgstr ""
 
-#: related.php:90 related.php:94
-msgid "Related posts"
-msgstr ""
-
-#: related.php:153
-msgid ""
-"Choose related posts. You can drag-and-drop them into the desired order:"
-msgstr ""
-
-#: related.php:169
-msgid "Delete"
-msgstr ""
-
-#: related.php:180
-msgid "Choose a related post... "
-msgstr ""
-
-#: related.php:312
-msgid "Invalid post ID specified"
-msgstr ""
-
-#: related.php:350
-msgid "Settings"
+#: page-related_du.php:12 page-related_du.php:66
+msgid "Related Posts (Doubled Up)"
 msgstr ""
 
 #: related-widget.php:6 related-widget.php:7
 msgid "Related Posts Widget"
 msgstr ""
 
-#: related-widget.php:76
+#: related-widget.php:76 related_du-widget.php:76
 msgid "Title"
+msgstr ""
+
+#: related.php:90 related.php:94
+msgid "Related posts"
+msgstr ""
+
+#: related.php:153 related_du.php:142
+msgid ""
+"Choose related posts. You can drag-and-drop them into the desired order:"
+msgstr ""
+
+#: related.php:167 related_du.php:156
+msgid "Delete"
+msgstr ""
+
+#: related.php:178 related_du.php:167
+msgid "Choose a related post... "
+msgstr ""
+
+#: related.php:286 related_du.php:275
+msgid "Invalid post ID specified"
+msgstr ""
+
+#: related.php:352
+#, php-format
+msgid "#%d (no title)"
+msgstr ""
+
+#: related.php:378 related_du.php:313
+msgid "Settings"
+msgstr ""
+
+#: related_du-widget.php:6 related_du-widget.php:7
+msgid "Related Posts Widget (Doubled Up)"
+msgstr ""
+
+#: related_du.php:92 related_du.php:96
+msgid "Related posts (Doubled Up)"
 msgstr ""
