@@ -169,6 +169,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0.1 =
+* 2015-04-25
+* Properly escape the title of the content filter.
+
 = 2.0.0 =
 * 2015-04-08
 * Add duplicate plugin Related (Doubled Up).

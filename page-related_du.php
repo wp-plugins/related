@@ -208,7 +208,7 @@ function related_du_options_page() {
 			<li>
 				<?php $related_content_title = get_option('related_content_title'); ?>
 				<label for="related_content_title"><?php _e('Title to show above the related posts: ', 'related'); ?><br />
-				<input name="related_content_title" type="text" id="related_content_title" value="<?php echo get_option('related_du_content_title', __('Related Posts', 'related')); ?>" />
+				<input name="related_content_title" type="text" id="related_content_title" value="<?php echo esc_attr(stripslashes(get_option('related_du_content_title', __('Related Posts', 'related')))); ?>" />
 			</label>
 			</li>
 			<li><input type="hidden" class="form" value="related_content" name="form" />

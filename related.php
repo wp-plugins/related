@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 2.0.0
+Version: 2.0.1
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -58,7 +58,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '2.0.0');
+			define('RELATED_VERSION', '2.0.1');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -298,7 +298,7 @@ if (!class_exists('Related')) :
 				if ( $related_posts ) {
 					$content .= '<div class="related_content" style="clear:both;">';
 					$content .= '<h3 class="widget-title">';
-					$content .= get_option('related_content_title', __('Related Posts', 'related'));
+					$content .= stripslashes(get_option('related_content_title', __('Related Posts', 'related')));
 					$content .= '</h3>';
 					$content .= $related_posts;
 					$content .= "</div>";

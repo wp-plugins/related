@@ -3,7 +3,7 @@
 Plugin Name: Related (Doubled Up)
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: Partnering plugin of Related, for building a second list of related posts. It requires the main Related plugin to be activated.
-Version: 2.0.0
+Version: 2.0.1
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -287,7 +287,7 @@ if (!class_exists('Related_du')) :
 				if ( $related_posts ) {
 					$content .= '<div class="related_du_content" style="clear:both;">';
 					$content .= '<h3 class="widget-title">';
-					$content .= get_option('related_du_content_title', __('Related Posts', 'related'));
+					$content .= stripslashes(get_option('related_du_content_title', __('Related Posts', 'related')));
 					$content .= '</h3>';
 					$content .= $related_posts;
 					$content .= "</div>";
