@@ -1,0 +1,150 @@
+# Related.
+# Copyright (C) 2013-2015 Marcel Pol
+# This file is distributed under the same license as the Related package.
+# Marcel Pol <marcel@timelord.nl>, 2013-2015.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.4\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-04-06 15:50+0200\n"
+"PO-Revision-Date: 2015-04-06 15:51+0100\n"
+"Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
+"Language-Team: nl <nl@li.org>\n"
+"Language: nl_NL\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+
+#: page-related.php:12 page-related.php:66 page-related.php:211
+#: page-related_du.php:211 related-widget.php:32 related-widget.php:72
+#: related.php:301 related_du-widget.php:32 related_du-widget.php:72
+#: related_du.php:290
+msgid "Related Posts"
+msgstr "Gerelateerde Berichten"
+
+#: page-related.php:22 page-related_du.php:22
+msgid "Cheatin&#8217; uh?"
+msgstr "Valsspelen, he?"
+
+#: page-related.php:69 page-related_du.php:69
+msgid "Post types"
+msgstr "Post types"
+
+#: page-related.php:70 page-related_du.php:70
+msgid "Form"
+msgstr "Formulier"
+
+#: page-related.php:71 page-related_du.php:71
+msgid "Content"
+msgstr "Inhoud"
+
+#: page-related.php:77 page-related_du.php:77
+msgid "Post Types to show the Related Posts form on."
+msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
+
+#: page-related.php:96 page-related_du.php:96
+msgid ""
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+"Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
+"geselecteerd, geldt Any nog steeds."
+
+#: page-related.php:126 page-related.php:186 page-related.php:215
+#: page-related_du.php:126 page-related_du.php:186 page-related_du.php:215
+msgid "Submit"
+msgstr "Opslaan"
+
+#: page-related.php:138 page-related_du.php:138
+msgid "Post Types to list on the Related Posts forms."
+msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
+
+#: page-related.php:157 page-related_du.php:157
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+"Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
+"geselecteerd, zal het nog steeds ieder Post Type tonen."
+
+#: page-related.php:198 page-related_du.php:198
+msgid "Add the Related Posts to the content."
+msgstr "Voeg de gerelateerde berichten toe aan de inhoud."
+
+#: page-related.php:201 page-related_du.php:201
+msgid ""
+"If you select to add the Related Posts below the content, it will be added "
+"to every display of the content."
+msgstr ""
+"Als je ervoor kiest de geselecteerde berichten toe te voegen aan de inhoud, "
+"wordt het toegevoegd aan elke weergave van de inhoud."
+
+#: page-related.php:206 page-related_du.php:206
+msgid "Add to content"
+msgstr "Voeg aan inhoud toe"
+
+#: page-related.php:210 page-related_du.php:210
+msgid "Title to show above the related posts: "
+msgstr "Titel om boven de gerelateerde berichten te tonen: "
+
+#: page-related_du.php:12 page-related_du.php:66
+msgid "Related Posts (Doubled Up)"
+msgstr "Gerelateerde Berichten (Dubbelop)"
+
+#: related-widget.php:6 related-widget.php:7
+msgid "Related Posts Widget"
+msgstr "Gerelateerde Berichten Widget"
+
+#: related-widget.php:76 related_du-widget.php:76
+msgid "Title"
+msgstr "Titel"
+
+#: related.php:90 related.php:94
+msgid "Related posts"
+msgstr "Gerelateerde berichten"
+
+#: related.php:153 related_du.php:142
+msgid ""
+"Choose related posts. You can drag-and-drop them into the desired order:"
+msgstr ""
+"Kies gerelateerde berichten. Je kunt ze verslepen in de gewenste volgorde:"
+
+#: related.php:167 related_du.php:156
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: related.php:178 related_du.php:167
+msgid "Choose a related post... "
+msgstr "Kies een gerelateerd bericht..."
+
+#: related.php:286 related_du.php:275
+msgid "Invalid post ID specified"
+msgstr "Ongeldige post ID opgegeven"
+
+#: related.php:352
+#, php-format
+msgid "#%d (no title)"
+msgstr "#%d (geen titel)"
+
+#: related.php:378 related_du.php:313
+msgid "Settings"
+msgstr "Instellingen"
+
+#: related_du-widget.php:6 related_du-widget.php:7
+msgid "Related Posts Widget (Doubled Up)"
+msgstr "Gerelateerde Berichten Widget (Dubbelop)"
+
+#: related_du.php:92 related_du.php:96
+msgid "Related posts (Doubled Up)"
+msgstr "Gerelateerde berichten (dubbelop)"
+
+#~ msgid "Select"
+#~ msgstr "Selecteren"
+
+#~ msgid ""
+#~ "Select related posts from the list. Drag selected ones to change order."
+#~ msgstr ""
+#~ "Selecteer gerelateerde posts uit de lijst. Sleep geselecteerden om de "
+#~ "volgorde te wijzigen."
