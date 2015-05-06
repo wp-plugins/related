@@ -169,6 +169,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0.2 =
+* 2015-05-06
+* Use is_singular, and show the list on pages as well.
+
 = 2.0.1 =
 * 2015-04-25
 * Properly escape the title of the content filter.
