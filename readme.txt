@@ -172,6 +172,7 @@ Yes, it is again actively maintained.
 = 2.0.3 =
 * 2015-05-31
 * Add about tab on settingspage.
+* Update pot and nl_NL.
 
 = 2.0.2 =
 * 2015-05-06
