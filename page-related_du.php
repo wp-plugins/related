@@ -75,60 +75,59 @@ function related_du_options_page() {
 		<div class="poststuff metabox-holder">
 			<div class="related-widget">
 				<h3 class="widget-top"><?php _e('Post Types to show the Related Posts form on.', 'related'); ?></h3>
-	<?php
-	$related_show = get_option('related_du_show');
-	$related_show = json_decode( $related_show );
-	$any = '';
-	if ( empty( $related_show ) ) {
-		$related_show = array();
-		$related_show[] = 'any';
-		$any = 'checked="checked"';
-	} else {
-		foreach ( $related_show as $key ) {
-			if ( $key == 'any' ) {
-				$any = 'checked="checked"';
-			}
-		}
-	}
-	?>
-
-	<div class="misc-pub-section">
-	<p><?php _e('If Any is selected, it will show on any Post Type. If none are selected, Any will still apply.', 'related'); ?></p>
-	<form name="related_options_page_show" action="" method="POST">
-		<ul>
-		<li><label for="show_any">
-			<input name="show_any" type="checkbox" id="show_any" <?php echo $any; ?>  />
-			any
-		</label></li>
-		<?php
-		$post_types = get_post_types( '', 'names' );
-		$checked = '';
-		foreach ( $post_types as $post_type ) {
-			if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
-				continue;
-			}
-
-			foreach ( $related_show as $key ) {
-				if ( $key == $post_type ) {
-					$checked = 'checked="checked"';
+				<?php
+				$related_show = get_option('related_du_show');
+				$related_show = json_decode( $related_show );
+				$any = '';
+				if ( empty( $related_show ) ) {
+					$related_show = array();
+					$related_show[] = 'any';
+					$any = 'checked="checked"';
+				} else {
+					foreach ( $related_show as $key ) {
+						if ( $key == 'any' ) {
+							$any = 'checked="checked"';
+						}
+					}
 				}
-			}
-			?>
-			<li><label for="show_<?php echo $post_type; ?>">
-				<input name="show_<?php echo $post_type; ?>" type="checkbox" id="show_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
-				<?php echo $post_type; ?>
-			</label></li>
-			<?php
-			$checked = ''; // reset
-		}
-		?>
-		<li><input type="hidden" class="form" value="related_show" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit','related' ); ?>"/></li>
-		</ul>
-	</form>
-	</div> <!-- .misc-pub-section -->
-	</div> <!-- .related-widget -->
-	</div> <!-- metabox-holder -->
+				?>
+
+				<div class="misc-pub-section">
+					<p><?php _e('If Any is selected, it will show on any Post Type. If none are selected, Any will still apply.', 'related'); ?></p>
+					<form name="related_options_page_show" action="" method="POST">
+						<ul>
+							<li><label for="show_any">
+								<input name="show_any" type="checkbox" id="show_any" <?php echo $any; ?>  />
+								any
+							</label></li>
+							<?php
+							$post_types = get_post_types( '', 'names' );
+							$checked = '';
+							foreach ( $post_types as $post_type ) {
+								if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
+									continue;
+								}
+
+								foreach ( $related_show as $key ) {
+									if ( $key == $post_type ) {
+										$checked = 'checked="checked"';
+									}
+								}
+								?>
+								<li><label for="show_<?php echo $post_type; ?>">
+									<input name="show_<?php echo $post_type; ?>" type="checkbox" id="show_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
+									<?php echo $post_type; ?>
+								</label></li>
+								<?php
+								$checked = ''; // reset
+							} ?>
+							<li><input type="hidden" class="form" value="related_show" name="form" />
+								<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit','related' ); ?>"/></li>
+						</ul>
+					</form>
+				</div> <!-- .misc-pub-section -->
+			</div> <!-- .related-widget -->
+		</div> <!-- metabox-holder -->
 	</div> <!-- .related_post_types -->
 
 
@@ -136,59 +135,58 @@ function related_du_options_page() {
 		<div class="poststuff metabox-holder">
 			<div class="related-widget">
 				<h3 class="widget-top"><?php _e('Post Types to list on the Related Posts forms.', 'related'); ?></h3>
-	<?php
-	$any = ''; // reset
-	$related_list = get_option('related_du_list');
-	$related_list = json_decode( $related_list );
-	if ( empty( $related_list ) ) {
-		$related_list = array();
-		$related_list[] = 'any';
-		$any = 'checked';
-	} else {
-		foreach ( $related_list as $key ) {
-			if ( $key == 'any' ) {
-				$any = 'checked="checked"';
-			}
-		}
-	}
-	?>
-
-	<div class="misc-pub-section">
-	<p><?php _e('If Any is selected, it will list any Post Type. If none are selected, it will still list any Post Type.', 'related'); ?></p>
-	<form name="related_options_page_listed" action="" method="POST">
-		<ul>
-		<li><label for="list_any">
-			<input name="list_any" type="checkbox" id="list_any" <?php echo $any; ?>  />
-			any
-		</label></li>
-		<?php
-		$post_types = get_post_types( '', 'names' );
-		foreach ( $post_types as $post_type ) {
-			if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
-				continue;
-			}
-
-			foreach ( $related_list as $key ) {
-				if ( $key == $post_type ) {
-					$checked = 'checked="checked"';
+				<?php
+				$any = ''; // reset
+				$related_list = get_option('related_du_list');
+				$related_list = json_decode( $related_list );
+				if ( empty( $related_list ) ) {
+					$related_list = array();
+					$related_list[] = 'any';
+					$any = 'checked';
+				} else {
+					foreach ( $related_list as $key ) {
+						if ( $key == 'any' ) {
+							$any = 'checked="checked"';
+						}
+					}
 				}
-			}
-			?>
-			<li><label for="list_<?php echo $post_type; ?>">
-				<input name="list_<?php echo $post_type; ?>" type="checkbox" id="list_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
-				<?php echo $post_type; ?>
-			</label></li>
-			<?php
-			$checked = ''; // reset
-		}
-		?>
-		<li><input type="hidden" class="form" value="related_list" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
-		</ul>
-	</form>
-	</div>
-	</div>
-	</div>
+				?>
+
+				<div class="misc-pub-section">
+					<p><?php _e('If Any is selected, it will list any Post Type. If none are selected, it will still list any Post Type.', 'related'); ?></p>
+					<form name="related_options_page_listed" action="" method="POST">
+						<ul>
+							<li><label for="list_any">
+								<input name="list_any" type="checkbox" id="list_any" <?php echo $any; ?>  />
+								any
+							</label></li>
+							<?php
+							$post_types = get_post_types( '', 'names' );
+							foreach ( $post_types as $post_type ) {
+								if ( $post_type == "revision" || $post_type == "nav_menu_item" ) {
+									continue;
+								}
+
+								foreach ( $related_list as $key ) {
+									if ( $key == $post_type ) {
+										$checked = 'checked="checked"';
+									}
+								}
+								?>
+								<li><label for="list_<?php echo $post_type; ?>">
+									<input name="list_<?php echo $post_type; ?>" type="checkbox" id="list_<?php echo $post_type; ?>" <?php echo $checked; ?>  />
+									<?php echo $post_type; ?>
+								</label></li>
+								<?php
+								$checked = ''; // reset
+							} ?>
+							<li><input type="hidden" class="form" value="related_list" name="form" />
+								<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div> <!-- .related_post_types -->
 
 
@@ -197,27 +195,27 @@ function related_du_options_page() {
 			<div class="related-widget">
 				<h3 class="widget-top"><?php _e('Add the Related Posts to the content.', 'related'); ?></h3>
 
-	<div class="misc-pub-section">
-	<p><?php _e('If you select to add the Related Posts below the content, it will be added to every display of the content.', 'related'); ?></p>
-	<form name="related_options_page_content" action="" method="POST">
-		<ul>
-			<li><label for="related_content">
-				<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_du_content', 0) ); ?> />
-				<?php _e('Add to content', 'related'); ?>
-			</label></li>
-			<li>
-				<?php $related_content_title = get_option('related_content_title'); ?>
-				<label for="related_content_title"><?php _e('Title to show above the related posts: ', 'related'); ?><br />
-				<input name="related_content_title" type="text" id="related_content_title" value="<?php echo esc_attr(stripslashes(get_option('related_du_content_title', __('Related Posts', 'related')))); ?>" />
-			</label>
-			</li>
-			<li><input type="hidden" class="form" value="related_content" name="form" />
-			<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
-		</ul>
-	</form>
-	</div>
-	</div>
-	</div>
+				<div class="misc-pub-section">
+					<p><?php _e('If you select to add the Related Posts below the content, it will be added to every display of the content.', 'related'); ?></p>
+					<form name="related_options_page_content" action="" method="POST">
+						<ul>
+							<li><label for="related_content">
+								<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_du_content', 0) ); ?> />
+								<?php _e('Add to content', 'related'); ?>
+							</label></li>
+							<li>
+								<?php $related_content_title = get_option('related_content_title'); ?>
+								<label for="related_content_title"><?php _e('Title to show above the related posts: ', 'related'); ?><br />
+								<input name="related_content_title" type="text" id="related_content_title" value="<?php echo esc_attr(stripslashes(get_option('related_du_content_title', __('Related Posts', 'related')))); ?>" />
+							</label>
+							</li>
+							<li><input type="hidden" class="form" value="related_content" name="form" />
+							<input type="submit" class="button button-primary" value="<?php esc_attr_e( 'Submit', 'related' ); ?>"/></li>
+						</ul>
+					</form>
+				</div>
+			</div>
+		</div>
 	</div> <!-- .related_content -->
 
 
