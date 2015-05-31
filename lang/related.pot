@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-31 13:07+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: page-related.php:12 page-related.php:66 page-related.php:209
+#: page-related_du.php:209 related-widget.php:32 related-widget.php:72
+#: related.php:301 related_du-widget.php:32 related_du-widget.php:72
+#: related_du.php:290
+msgid "Related Posts"
+msgstr ""
+
+#: page-related.php:22 page-related_du.php:22
+msgid "Cheatin&#8217; uh?"
+msgstr ""
+
+#: page-related.php:69 page-related_du.php:69
+msgid "Post types"
+msgstr ""
+
+#: page-related.php:70 page-related_du.php:70
+msgid "Form"
+msgstr ""
+
+#: page-related.php:71 page-related_du.php:71
+msgid "Content"
+msgstr ""
+
+#: page-related.php:72
+msgid "About"
+msgstr ""
+
+#: page-related.php:78 page-related_du.php:77
+msgid "Post Types to show the Related Posts form on."
+msgstr ""
+
+#: page-related.php:97 page-related_du.php:96
+msgid ""
+"If Any is selected, it will show on any Post Type. If none are selected, Any "
+"will still apply."
+msgstr ""
+
+#: page-related.php:126 page-related.php:184 page-related.php:213
+#: page-related_du.php:125 page-related_du.php:184 page-related_du.php:213
+msgid "Submit"
+msgstr ""
+
+#: page-related.php:138 page-related_du.php:137
+msgid "Post Types to list on the Related Posts forms."
+msgstr ""
+
+#: page-related.php:156 page-related_du.php:156
+msgid ""
+"If Any is selected, it will list any Post Type. If none are selected, it "
+"will still list any Post Type."
+msgstr ""
+
+#: page-related.php:196 page-related_du.php:196
+msgid "Add the Related Posts to the content."
+msgstr ""
+
+#: page-related.php:199 page-related_du.php:199
+msgid ""
+"If you select to add the Related Posts below the content, it will be added "
+"to every display of the content."
+msgstr ""
+
+#: page-related.php:204 page-related_du.php:204
+msgid "Add to content"
+msgstr ""
+
+#: page-related.php:208 page-related_du.php:208
+msgid "Title to show above the related posts: "
+msgstr ""
+
+#: page-related.php:225
+msgid "About this plugin."
+msgstr ""
+
+#: page-related.php:226
+msgid "This plugin is being maintained by Marcel Pol from"
+msgstr ""
+
+#: page-related.php:230
+msgid "Review this plugin."
+msgstr ""
+
+#: page-related.php:231
+msgid "If this plugin has any value to you, then please leave a review at"
+msgstr ""
+
+#: page-related.php:232
+msgid "The plugin page at wordpress.org."
+msgstr ""
+
+#: page-related.php:233
+msgid "the plugin page at wordpress.org"
+msgstr ""
+
+#: page-related.php:237
+msgid "Donate to the EFF."
+msgstr ""
+
+#: page-related.php:238
+msgid ""
+"The Electronic Frontier Foundation is one of the few organisations that "
+"wants to keep the internet a free place."
+msgstr ""
+
+#: page-related.php:239
+msgid "Please donate to the EFF."
+msgstr ""
+
+#: page-related.php:241 page-related.php:243
+msgid "Donate to the maintainer."
+msgstr ""
+
+#: page-related.php:242
+msgid ""
+"If you rather want to donate to the maintainer of the plugin, you can donate "
+"through PayPal."
+msgstr ""
+
+#: page-related.php:243
+msgid "Donate through"
+msgstr ""
+
+#: page-related.php:243
+msgid "PayPal"
+msgstr ""
+
+#: page-related.php:244
+msgid "to"
+msgstr ""
+
+#: page-related_du.php:12 page-related_du.php:66
+msgid "Related Posts (Doubled Up)"
+msgstr ""
+
+#: related-widget.php:6 related-widget.php:7
+msgid "Related Posts Widget"
+msgstr ""
+
+#: related-widget.php:76 related_du-widget.php:76
+msgid "Title"
+msgstr ""
+
+#: related.php:90 related.php:94
+msgid "Related posts"
+msgstr ""
+
+#: related.php:153 related_du.php:142
+msgid ""
+"Choose related posts. You can drag-and-drop them into the desired order:"
+msgstr ""
+
+#: related.php:167 related_du.php:156
+msgid "Delete"
+msgstr ""
+
+#: related.php:178 related_du.php:167
+msgid "Choose a related post... "
+msgstr ""
+
+#: related.php:286 related_du.php:275
+msgid "Invalid post ID specified"
+msgstr ""
+
+#: related.php:352
+#, php-format
+msgid "#%d (no title)"
+msgstr ""
+
+#: related.php:378 related_du.php:313
+msgid "Settings"
+msgstr ""
+
+#: related_du-widget.php:6 related_du-widget.php:7
+msgid "Related Posts Widget (Doubled Up)"
+msgstr ""
+
+#: related_du.php:92 related_du.php:96
+msgid "Related posts (Doubled Up)"
+msgstr ""

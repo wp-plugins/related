@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Related
+Plugin Name: Related (Doubled Up)
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
-Description: A simple 'related posts' plugin that lets you select related posts manually.
+Description: Partnering plugin of Related, for building a second list of related posts. It requires the main Related plugin to be activated.
 Version: 2.0.3
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
@@ -30,8 +30,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
 
-if (!class_exists('Related')) :
-	class Related {
+if (!class_exists('Related_du')) :
+	class Related_du {
 
 		/*
 		 * __construct
@@ -41,6 +41,14 @@ if (!class_exists('Related')) :
 
 			// Set some helpful constants
 			$this->defineConstants();
+
+			/* Test if the main Related plugin is activated. */
+			$main_plugin = plugin_basename( dirname(__FILE__) . '/related.php' );
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			if ( !is_plugin_active($main_plugin) ) {
+				// Not active, deactivate this one again.
+				deactivate_plugins( plugin_basename( dirname(__FILE__) . '/related_du.php' ) );
+			}
 
 			// Register hook to save the related posts when saving the post
 			add_action('save_post', array(&$this, 'save'));
@@ -58,11 +66,8 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '2.0.3');
-			define('RELATED_HOME', 'http://zenoweb.nl');
-			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
-			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
-			define('RELATED_URLPATH', WP_PLUGIN_URL . '/' . plugin_basename(dirname(__FILE__)));
+			define('RELATED_DU_FILE', plugin_basename(dirname(__FILE__)));
+			define('RELATED_DU_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
 		}
 
 
@@ -75,11 +80,8 @@ if (!class_exists('Related')) :
 			// Load the scripts
 			add_action('admin_enqueue_scripts', array(&$this, 'loadScripts'));
 
-			// Load the CSS
-			add_action('admin_enqueue_scripts', array(&$this, 'loadCSS'));
-
 			// Adds a meta box for related posts to the edit screen of each post type in WordPress
-			$related_show = get_option('related_show');
+			$related_show = get_option('related_du_show');
 			$related_show = json_decode( $related_show );
 			if ( empty( $related_show ) ) {
 				$related_show = array();
@@ -87,11 +89,11 @@ if (!class_exists('Related')) :
 			}
 			if ( in_array( 'any', $related_show ) ) {
 				foreach (get_post_types() as $post_type) :
-					add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+					add_meta_box($post_type . '-related_du-posts-box', __('Related posts (Doubled Up)', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
 				endforeach;
 			} else {
 				foreach ($related_show as $post_type) :
-					add_meta_box($post_type . '-related-posts-box', __('Related posts', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
+					add_meta_box($post_type . '-related_du-posts-box', __('Related posts (Doubled Up)', 'related' ), array(&$this, 'displayMetaBox'), $post_type, 'normal', 'high');
 				endforeach;
 			}
 
@@ -103,20 +105,7 @@ if (!class_exists('Related')) :
 		 * Load Javascript
 		 */
 		public function loadScripts() {
-			wp_enqueue_script('jquery-ui-core');
-			wp_enqueue_script('jquery-ui-sortable');
-			wp_enqueue_script('related-scripts', RELATED_URLPATH .'/scripts.js', false, RELATED_VERSION, true);
-			wp_enqueue_script('related-chosen', RELATED_URLPATH .'/chosen/chosen.jquery.min.js', false, RELATED_VERSION, true);
-		}
-
-
-		/*
-		 * loadCSS
-		 * Load CSS
-		 */
-		public function loadCSS() {
-			wp_enqueue_style('related-css', RELATED_URLPATH .'/styles.css', false, RELATED_VERSION, 'all');
-			wp_enqueue_style('related-css-chosen', RELATED_URLPATH .'/chosen/chosen.min.css', false, RELATED_VERSION, 'all');
+			wp_enqueue_script('related_du-scripts', RELATED_URLPATH .'/scripts_du.js', false, RELATED_VERSION, true);
 		}
 
 
@@ -129,13 +118,13 @@ if (!class_exists('Related')) :
 
 			if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
 
-			if ( isset($_POST['related-posts']) ) {
-				update_post_meta($id, 'related_posts', $_POST['related-posts']);
+			if ( isset($_POST['related_du-posts']) ) {
+				update_post_meta($id, 'related_du_posts', $_POST['related_du-posts']);
 			}
 			/* Only delete on post.php page, not on Quick Edit. */
-			if ( empty($_POST['related-posts']) ) {
+			if ( empty($_POST['related_du-posts']) ) {
 				if ( $pagenow == 'post.php' ) {
-					delete_post_meta($id, 'related_posts');
+					delete_post_meta($id, 'related_du_posts');
 				}
 			}
 		}
@@ -150,10 +139,10 @@ if (!class_exists('Related')) :
 
 			$post_id = $post->ID;
 
-			echo '<p>' . __('Choose related posts. You can drag-and-drop them into the desired order:', 'related' ) . '</p><div id="related-posts">';
+			echo '<p>' . __('Choose related posts. You can drag-and-drop them into the desired order:', 'related' ) . '</p><div id="related_du-posts">';
 
 			// Get related posts if existing
-			$related = get_post_meta($post_id, 'related_posts', true);
+			$related = get_post_meta($post_id, 'related_du_posts', true);
 
 			if (!empty($related)) :
 				foreach($related as $r) :
@@ -161,9 +150,9 @@ if (!class_exists('Related')) :
 
 
 					echo '
-						<div class="related-post" id="related-post-' . $r . '">
-							<input type="hidden" name="related-posts[]" value="' . $r . '">
-							<span class="related-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
+						<div class="related_du-post" id="related_du-post-' . $r . '">
+							<input type="hidden" name="related_du-posts[]" value="' . $r . '">
+							<span class="related_du-post-title">' . $p->post_title . ' (' . ucfirst(get_post_type($p->ID)) . ')</span>
 							<a href="#">' . __('Delete', 'related' ) . '</a>
 						</div>';
 				endforeach;
@@ -175,12 +164,12 @@ if (!class_exists('Related')) :
 			echo '
 				</div>
 				<p>
-					<select class="related-posts-select chosen-select" name="related-posts-select" data-placeholder="' . __('Choose a related post... ', 'related' ) . '">';
+					<select class="related_du-posts-select chosen-select" name="related_du-posts-select" data-placeholder="' . __('Choose a related post... ', 'related' ) . '">';
 
 			echo '<option value="0"></option>';
 
 
-			$related_list = get_option('related_list');
+			$related_list = get_option('related_du_list');
 			$related_list = json_decode( $related_list );
 
 			if ( empty( $related_list ) || in_array( 'any', $related_list ) ) {
@@ -250,7 +239,7 @@ if (!class_exists('Related')) :
 			}
 
 			if (!empty($id) && is_numeric($id)) :
-				$related = get_post_meta($id, 'related_posts', true);
+				$related = get_post_meta($id, 'related_du_posts', true);
 
 				if (!empty($related)) :
 					$rel = array();
@@ -266,7 +255,7 @@ if (!class_exists('Related')) :
 					// Otherwise return a formatted list
 					else :
 						if ( is_array( $rel ) && count( $rel ) > 0 ) {
-							$list = '<ul class="related-posts">';
+							$list = '<ul class="related_du-posts">';
 							foreach ($rel as $r) :
 								if ( is_object( $r ) ) {
 									if ($r->post_status != 'trash') {
@@ -292,13 +281,13 @@ if (!class_exists('Related')) :
 		 * Add the plugin data to the content, if it is set in the options.
 		 */
 		public function related_content_filter( $content ) {
-			if ( get_option( 'related_content', 0 ) == 1 && is_singular() ) {
-				global $related;
-				$related_posts = $related->show( get_the_ID() );
+			if ( get_option( 'related_du_content', 0 ) == 1 && is_singular() ) {
+				global $related_du;
+				$related_posts = $related_du->show( get_the_ID() );
 				if ( $related_posts ) {
-					$content .= '<div class="related_content" style="clear:both;">';
+					$content .= '<div class="related_du_content" style="clear:both;">';
 					$content .= '<h3 class="widget-title">';
-					$content .= stripslashes(get_option('related_content_title', __('Related Posts', 'related')));
+					$content .= stripslashes(get_option('related_du_content_title', __('Related Posts', 'related')));
 					$content .= '</h3>';
 					$content .= $related_posts;
 					$content .= "</div>";
@@ -313,80 +302,26 @@ if (!class_exists('Related')) :
 endif;
 
 
-/**
- * Create HTML dropdown list of hierarchical post_types.
- * Returns the list of <option>'s for the select dropdown.
- */
-class Walker_RelatedDropdown extends Walker {
-	/**
-	 * @see Walker::$tree_type
-	 * @since 2.1.0
-	 * @var string
-	 */
-	public $tree_type = 'page';
-
-	/**
-	 * @see Walker::$db_fields
-	 * @since 2.1.0
-	 * @todo Decouple this
-	 * @var array
-	 */
-	public $db_fields = array ('parent' => 'post_parent', 'id' => 'ID');
-
-	/**
-	 * @see Walker::start_el()
-	 * @since 2.1.0
-	 *
-	 * @param string $output Passed by reference. Used to append additional content.
-	 * @param object $page   Page data object.
-	 * @param int    $depth  Depth of page in reference to parent pages. Used for padding.
-	 * @param int $id
-	 */
-	public function start_el( &$output, $page, $depth = 0, $args = array(), $id = 0 ) {
-		$pad = str_repeat('&nbsp;', $depth * 3);
-
-		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $page->ID ) . "\">";
-
-		$title = $page->post_title;
-		if ( '' === $title ) {
-			$title = sprintf( __( '#%d (no title)', 'related' ), $page->ID );
-		}
-
-		/**
-		 * Filter the page title when creating an HTML drop-down list of pages.
-		 *
-		 * @since 3.1.0
-		 *
-		 * @param string $title Page title.
-		 * @param object $page  Page data object.
-		 */
-		$title = apply_filters( 'list_pages', $title, $page );
-		$output .= $pad . esc_html( $title );
-		$output .= "</option>\n";
-	}
-}
-
-
 /*
  * related_links
  * Add Settings link to the main plugin page
  *
  */
 
-function related_links( $links, $file ) {
-	if ( $file == plugin_basename( dirname(__FILE__).'/related.php' ) ) {
-		$links[] = '<a href="' . admin_url( 'options-general.php?page=related.php' ) . '">'.__( 'Settings', 'related' ).'</a>';
+function related_du_links( $links, $file ) {
+	if ( $file == plugin_basename( dirname(__FILE__).'/related_du.php' ) ) {
+		$links[] = '<a href="' . admin_url( 'options-general.php?page=related_du.php' ) . '">'.__( 'Settings', 'related' ).'</a>';
 	}
 	return $links;
 }
-add_filter( 'plugin_action_links', 'related_links', 10, 2 );
+add_filter( 'plugin_action_links', 'related_du_links', 10, 2 );
 
 
 /* Include Settings page */
-include( 'page-related.php' );
+include( 'page-related_du.php' );
 
 /* Include widget */
-include( 'related-widget.php' );
+include( 'related_du-widget.php' );
 
 
 /*
@@ -396,12 +331,11 @@ include( 'related-widget.php' );
  * - Make an instance of Related()
  */
 
-function related_init() {
-	load_plugin_textdomain('related', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/');
-
+function related_du_init() {
 	// Start the plugin
-	global $related;
-	$related = new Related();
+	global $related_du;
+	$related_du = new Related_du();
 }
-add_action('plugins_loaded', 'related_init');
+add_action('plugins_loaded', 'related_du_init');
+
 
