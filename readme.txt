@@ -169,6 +169,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0.5 =
+* 2015-07-17
+* Much simpler solution for WPML.
+
 = 2.0.4 =
 * 2015-07-17
 * Support WPML, only list the right posts in the metabox.

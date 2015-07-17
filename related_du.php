@@ -3,7 +3,7 @@
 Plugin Name: Related (Doubled Up)
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: Partnering plugin of Related, for building a second list of related posts. It requires the main Related plugin to be activated.
-Version: 2.0.4
+Version: 2.0.5
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -135,22 +135,7 @@ if (!class_exists('Related_du')) :
 		 * Creates the output on the post screen
 		 */
 		public function displayMetaBox() {
-			global $post, $post_lang;
-
-			/* Compatibility for WPML, will display only the posts in the current language. */
-			$post_lang = '';
-			$plugin = "sitepress-multilingual-cms/sitepress.php";
-			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-			if ( is_plugin_active($plugin) ) {
-				global $sitepress;
-				if( $sitepress->is_translated_post_type($post->post_type) ){
-					// get element language
-					$post_lang_obj = $sitepress->get_element_language_details($post->ID, 'post_' . $post->post_type);
-					if ( isset($post_lang_obj) && is_object($post_lang_obj) ) {
-						$post_lang = $post_lang_obj->language_code;
-					}
-				}
-			}
+			global $post;
 
 			$post_id = $post->ID;
 
@@ -204,12 +189,14 @@ if (!class_exists('Related_du')) :
 
 				echo '<optgroup label="'. $post_type .'">';
 
+				/* Use suppress_filters to support WPML, only show posts in the right language. */
 				$r = array(
 					'nopaging' => true,
 					'posts_per_page' => -1,
 					'orderby' => 'title',
 					'order' => 'ASC',
 					'post_type' => $post_type,
+					'suppress_filters' => 0,
 					'post_status' => 'publish, inherit',
 				);
 
