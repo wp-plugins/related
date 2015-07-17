@@ -172,6 +172,7 @@ Yes, it is again actively maintained.
 = 2.0.4 =
 * 2015-07-17
 * Support WPML, only list the right posts in the metabox.
+* Upgrade Chosen.js from 1.2.0 to 1.4.2.
 
 = 2.0.3 =
 * 2015-05-31
