@@ -3,7 +3,7 @@
 Plugin Name: Related
 Plugin URI: http://products.zenoweb.nl/free-wordpress-plugins/related/
 Description: A simple 'related posts' plugin that lets you select related posts manually.
-Version: 2.0.3
+Version: 2.0.4
 Author: Marcel Pol
 Author URI: http://zenoweb.nl
 Text Domain: related
@@ -58,7 +58,7 @@ if (!class_exists('Related')) :
 		 * Defines a few static helper values we might need
 		 */
 		protected function defineConstants() {
-			define('RELATED_VERSION', '2.0.3');
+			define('RELATED_VERSION', '2.0.4');
 			define('RELATED_HOME', 'http://zenoweb.nl');
 			define('RELATED_FILE', plugin_basename(dirname(__FILE__)));
 			define('RELATED_ABSPATH', str_replace('\\', '/', WP_PLUGIN_DIR . '/' . plugin_basename(dirname(__FILE__))));
@@ -146,7 +146,22 @@ if (!class_exists('Related')) :
 		 * Creates the output on the post screen
 		 */
 		public function displayMetaBox() {
-			global $post;
+			global $post, $post_lang;
+
+			/* Compatibility for WPML, will display only the posts in the current language. */
+			$post_lang = '';
+			$plugin = "sitepress-multilingual-cms/sitepress.php";
+			include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+			if ( is_plugin_active($plugin) ) {
+				global $sitepress;
+				if( $sitepress->is_translated_post_type($post->post_type) ){
+					// get element language
+					$post_lang_obj = $sitepress->get_element_language_details($post->ID, 'post_' . $post->post_type);
+					if ( isset($post_lang_obj) && is_object($post_lang_obj) ) {
+						$post_lang = $post_lang_obj->language_code;
+					}
+				}
+			}
 
 			$post_id = $post->ID;
 
@@ -344,6 +359,25 @@ class Walker_RelatedDropdown extends Walker {
 	 */
 	public function start_el( &$output, $page, $depth = 0, $args = array(), $id = 0 ) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
+
+		$plugin = "sitepress-multilingual-cms/sitepress.php";
+		include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		if ( is_plugin_active($plugin) ) {
+			global $sitepress, $post_lang;
+			if( $sitepress->is_translated_post_type($page->post_type) ){
+				// get element language
+				$rel_post_lang_obj = $sitepress->get_element_language_details($page->ID, 'post_' . $page->post_type);
+				if ( isset($rel_post_lang_obj) && is_object($rel_post_lang_obj) ) {
+					$rel_post_lang = $rel_post_lang_obj->language_code;
+					if( !empty($rel_post_lang) && !empty($post_lang) ) {
+						if( $rel_post_lang != $post_lang ) {
+							// Not the right language...
+							return;
+						}
+					}
+				}
+			}
+		}
 
 		$output .= "\t<option class=\"level-$depth\" value=\"" . esc_attr( $page->ID ) . "\">";
 

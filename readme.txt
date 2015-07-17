@@ -2,7 +2,7 @@
 Contributors: mpol
 Tags: related, post, related post, related posts, related content, similar posts, link, linked, linked post, linked posts, internal links, widget, post2post, posts2posts, posts 2 posts, pods
 Requires at least: 3.3
-Tested up to: 4.2
+Tested up to: 4.3
 Stable tag: 2.0.3
 License: GPLv2 or later
 
@@ -168,6 +168,10 @@ Yes, it is again actively maintained.
 2. Widget in the frontend on Twenty Fourteen Theme
 
 == Changelog ==
+
+= 2.0.4 =
+* 2015-07-17
+* Support WPML, only list the right posts in the metabox.
 
 = 2.0.3 =
 * 2015-05-31
