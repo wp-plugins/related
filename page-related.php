@@ -52,6 +52,15 @@ function related_options_page() {
 			} else {
 				update_option('related_content', 0);
 			}
+			if ( isset( $_POST['related_content_all'] ) ) {
+				if ($_POST['related_content_all'] == 'on') {
+					update_option('related_content_all', 1);
+				} else {
+					update_option('related_content_all', 0);
+				}
+			} else {
+				update_option('related_content_all', 0);
+			}
 			if ( isset( $_POST['related_content_title'] ) ) {
 				if ($_POST['related_content_title'] != '') {
 					update_option( 'related_content_title', sanitize_text_field($_POST['related_content_title']) );
@@ -194,14 +203,17 @@ function related_options_page() {
 		<div class="poststuff metabox-holder">
 			<div class="related-widget">
 				<h3 class="widget-top"><?php _e('Add the Related Posts to the content.', 'related'); ?></h3>
-
 				<div class="misc-pub-section">
 					<p><?php _e('If you select to add the Related Posts below the content, it will be added to every display of the content.', 'related'); ?></p>
 					<form name="related_options_page_content" action="" method="POST">
 						<ul>
 							<li><label for="related_content">
 								<input name="related_content" type="checkbox" id="related_content" <?php checked(1, get_option('related_content', 0) ); ?> />
-								<?php _e('Add to content', 'related'); ?>
+								<?php _e('Add to content on single view.', 'related'); ?>
+							</label></li>
+							<li><label for="related_content_all">
+								<input name="related_content_all" type="checkbox" id="related_content_all" <?php checked(1, get_option('related_content_all', 0) ); ?> />
+								<?php _e('Add to content on all views.', 'related'); ?>
 							</label></li>
 							<li>
 								<?php $related_content_title = get_option('related_content_title'); ?>
