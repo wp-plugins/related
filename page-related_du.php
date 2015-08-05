@@ -72,7 +72,7 @@ function related_du_options_page() {
 
 	<div class="wrap">
 
-	<h1><?php _e('Related Posts (Doubled Up)', 'related'); ?></h2>
+	<h1><?php _e('Related Posts (Doubled Up)', 'related'); ?></h1>
 
 	<h2 class="nav-tab-wrapper related-nav-tab-wrapper">
 		<a href="#" class="nav-tab <?php if ($active_tab == 'related_show') { echo "nav-tab-active";} ?>" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>

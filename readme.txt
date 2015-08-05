@@ -169,6 +169,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0.7 =
+* 2015-
+* Use h1 headings properly, including closing tag.
+
 = 2.0.6 =
 * 2015-08-05
 * Use h1 header on admin page.
