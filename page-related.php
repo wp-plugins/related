@@ -63,7 +63,7 @@ function related_options_page() {
 
 	<div class="wrap">
 
-	<h2><?php _e('Related Posts', 'related'); ?></h2>
+	<h1><?php _e('Related Posts', 'related'); ?></h2>
 
 	<h2 class="nav-tab-wrapper related-nav-tab-wrapper">
 		<a href="#" class="nav-tab <?php if ($active_tab == 'related_show') { echo "nav-tab-active";} ?>" rel="related_post_types"><?php _e('Post types', 'related'); ?></a>

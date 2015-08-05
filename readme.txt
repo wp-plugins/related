@@ -169,6 +169,10 @@ Yes, it is again actively maintained.
 
 == Changelog ==
 
+= 2.0.6 =
+* 2015-08-05
+* Use h1 header on admin page.
+
 = 2.0.5 =
 * 2015-07-17
 * Much simpler solution for WPML.
