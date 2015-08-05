@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.4\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-31 13:07+0200\n"
-"PO-Revision-Date: 2015-05-31 13:10+0100\n"
+"POT-Creation-Date: 2015-08-05 14:27+0200\n"
+"PO-Revision-Date: 2015-08-05 14:27+0200\n"
 "Last-Translator: Marcel Pol <marcel@timelord.nl>\n"
 "Language-Team: nl <nl@li.org>\n"
 "Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.3\n"
 
-#: page-related.php:12 page-related.php:66 page-related.php:209
-#: page-related_du.php:209 related-widget.php:32 related-widget.php:72
-#: related.php:301 related_du-widget.php:32 related_du-widget.php:72
-#: related_du.php:290
+#: page-related.php:12 page-related.php:75 page-related.php:221
+#: page-related_du.php:221 related-widget.php:32 related-widget.php:72
+#: related.php:303 related_du-widget.php:32 related_du-widget.php:72
+#: related_du.php:292
 msgid "Related Posts"
 msgstr "Gerelateerde Berichten"
 
@@ -28,27 +28,27 @@ msgstr "Gerelateerde Berichten"
 msgid "Cheatin&#8217; uh?"
 msgstr "Valsspelen, he?"
 
-#: page-related.php:69 page-related_du.php:69
+#: page-related.php:78 page-related_du.php:78
 msgid "Post types"
 msgstr "Post types"
 
-#: page-related.php:70 page-related_du.php:70
+#: page-related.php:79 page-related_du.php:79
 msgid "Form"
 msgstr "Formulier"
 
-#: page-related.php:71 page-related_du.php:71
+#: page-related.php:80 page-related_du.php:80
 msgid "Content"
 msgstr "Inhoud"
 
-#: page-related.php:72
+#: page-related.php:81
 msgid "About"
 msgstr "Over"
 
-#: page-related.php:78 page-related_du.php:77
+#: page-related.php:87 page-related_du.php:86
 msgid "Post Types to show the Related Posts form on."
 msgstr "Post Types om het Gerelateerde Berichten formulier op te tonen."
 
-#: page-related.php:97 page-related_du.php:96
+#: page-related.php:106 page-related_du.php:105
 msgid ""
 "If Any is selected, it will show on any Post Type. If none are selected, Any "
 "will still apply."
@@ -56,16 +56,16 @@ msgstr ""
 "Als Any geselecteerd is, wordt het op ieder Post Type getoond. Als geen is "
 "geselecteerd, geldt Any nog steeds."
 
-#: page-related.php:126 page-related.php:184 page-related.php:213
-#: page-related_du.php:125 page-related_du.php:184 page-related_du.php:213
+#: page-related.php:135 page-related.php:193 page-related.php:225
+#: page-related_du.php:134 page-related_du.php:193 page-related_du.php:225
 msgid "Submit"
 msgstr "Opslaan"
 
-#: page-related.php:138 page-related_du.php:137
+#: page-related.php:147 page-related_du.php:146
 msgid "Post Types to list on the Related Posts forms."
 msgstr "Post Types om weer te geven op het Gerelateerde Berichten formulier."
 
-#: page-related.php:156 page-related_du.php:156
+#: page-related.php:165 page-related_du.php:165
 msgid ""
 "If Any is selected, it will list any Post Type. If none are selected, it "
 "will still list any Post Type."
@@ -73,11 +73,11 @@ msgstr ""
 "Als Any geselecteerd is, wordt ieder Post Type getoond. Als geen is "
 "geselecteerd, zal het nog steeds ieder Post Type tonen."
 
-#: page-related.php:196 page-related_du.php:196
+#: page-related.php:205 page-related_du.php:205
 msgid "Add the Related Posts to the content."
 msgstr "Voeg de gerelateerde berichten toe aan de inhoud."
 
-#: page-related.php:199 page-related_du.php:199
+#: page-related.php:207 page-related_du.php:207
 msgid ""
 "If you select to add the Related Posts below the content, it will be added "
 "to every display of the content."
@@ -85,44 +85,48 @@ msgstr ""
 "Als je ervoor kiest de geselecteerde berichten toe te voegen aan de inhoud, "
 "wordt het toegevoegd aan elke weergave van de inhoud."
 
-#: page-related.php:204 page-related_du.php:204
-msgid "Add to content"
-msgstr "Voeg aan inhoud toe"
+#: page-related.php:212 page-related_du.php:212
+msgid "Add to content on single view."
+msgstr "Voeg aan inhoud toe voor afzonderlijke weergave."
 
-#: page-related.php:208 page-related_du.php:208
+#: page-related.php:216 page-related_du.php:216
+msgid "Add to content on all views."
+msgstr "Voeg aan inhoud toe voor alle weergaven."
+
+#: page-related.php:220 page-related_du.php:220
 msgid "Title to show above the related posts: "
 msgstr "Titel om boven de gerelateerde berichten te tonen: "
 
-#: page-related.php:225
+#: page-related.php:237
 msgid "About this plugin."
 msgstr "Over deze plugin."
 
-#: page-related.php:226
+#: page-related.php:238
 msgid "This plugin is being maintained by Marcel Pol from"
 msgstr "Deze plugin wordt onderhouden door Marcel Pol van"
 
-#: page-related.php:230
+#: page-related.php:242
 msgid "Review this plugin."
 msgstr "Review deze plugin."
 
-#: page-related.php:231
+#: page-related.php:243
 msgid "If this plugin has any value to you, then please leave a review at"
 msgstr ""
 "Als deze plugin enige waarde voor je heeft, laat dan een review achter op"
 
-#: page-related.php:232
+#: page-related.php:244
 msgid "The plugin page at wordpress.org."
 msgstr "de plugin pagina op wordpress.org."
 
-#: page-related.php:233
+#: page-related.php:245
 msgid "the plugin page at wordpress.org"
 msgstr "de plugin pagina op wordpress.org"
 
-#: page-related.php:237
+#: page-related.php:249
 msgid "Donate to the EFF."
 msgstr "Doneren aan de EFF."
 
-#: page-related.php:238
+#: page-related.php:250
 msgid ""
 "The Electronic Frontier Foundation is one of the few organisations that "
 "wants to keep the internet a free place."
@@ -130,15 +134,15 @@ msgstr ""
 "De Electronic Frontier Foundation is één van de weinige organisaties die het "
 "internet vrij wil houden."
 
-#: page-related.php:239
+#: page-related.php:251
 msgid "Please donate to the EFF."
 msgstr "Doneer svp. aan de EFF."
 
-#: page-related.php:241 page-related.php:243
+#: page-related.php:253 page-related.php:255
 msgid "Donate to the maintainer."
 msgstr "Doneren aan de ontwikkelaar."
 
-#: page-related.php:242
+#: page-related.php:254
 msgid ""
 "If you rather want to donate to the maintainer of the plugin, you can donate "
 "through PayPal."
@@ -146,19 +150,19 @@ msgstr ""
 "Als je liever aan de ontwikkelaar van de plugin doneert, kun je via PayPal "
 "doneren."
 
-#: page-related.php:243
+#: page-related.php:255
 msgid "Donate through"
 msgstr "Doneer via"
 
-#: page-related.php:243
+#: page-related.php:255
 msgid "PayPal"
 msgstr "PayPal"
 
-#: page-related.php:244
+#: page-related.php:256
 msgid "to"
 msgstr "aan"
 
-#: page-related_du.php:12 page-related_du.php:66
+#: page-related_du.php:12 page-related_du.php:75
 msgid "Related Posts (Doubled Up)"
 msgstr "Gerelateerde Berichten (Dubbelop)"
 
@@ -188,16 +192,16 @@ msgstr "Verwijderen"
 msgid "Choose a related post... "
 msgstr "Kies een gerelateerd bericht..."
 
-#: related.php:286 related_du.php:275
+#: related.php:288 related_du.php:277
 msgid "Invalid post ID specified"
 msgstr "Ongeldige post ID opgegeven"
 
-#: related.php:352
+#: related.php:354
 #, php-format
 msgid "#%d (no title)"
 msgstr "#%d (geen titel)"
 
-#: related.php:378 related_du.php:313
+#: related.php:380 related_du.php:315
 msgid "Settings"
 msgstr "Instellingen"
 

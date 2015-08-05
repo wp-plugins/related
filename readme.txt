@@ -173,6 +173,7 @@ Yes, it is again actively maintained.
 * 2015-08-05
 * Use h1 header on admin page.
 * Add option for content filter to show on all views.
+* Update pot, nl_NL.
 
 = 2.0.5 =
 * 2015-07-17
